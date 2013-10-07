@@ -1,0 +1,11 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="classtimer.lua"/>
+	<Script file="dropdownlist.lua"/>
+	<Script file="extra.lua"/>
+	<Script file="testui.lua"/>
+	<Script file="threatbar.lua"/>
+	<Script file="altpowerbar.lua"/>
+	<Script file="spellID.lua"/>
+	<Script file="raidutilities.lua"/>
+	<Script file="spellcooldowns.lua"/>
+</Ui>

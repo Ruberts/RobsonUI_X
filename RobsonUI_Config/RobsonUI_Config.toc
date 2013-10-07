@@ -1,0 +1,6 @@
+## Interface: 50400
+## Title: |cff1784d1RobsonUI Config|r
+## Notes: Config for RobsonUI
+## Author: Robson
+
+config.lua

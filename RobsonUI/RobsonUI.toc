@@ -1,0 +1,10 @@
+﻿## Interface: 50400
+## Title: |cff1784d1RobsonUI|r
+## Notes: RobsonUI for 5.4
+## Version: 1.0
+## Author: Robson
+## RequiredDeps: RobsonUI_Config, Tukui
+## Thanks to: Tukui.org, Hydra
+## OptionalDeps: TinyDPS, CombustionHelper
+
+RobsonUI.xml

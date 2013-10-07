@@ -1,0 +1,5 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="BlizzardFrames.lua"/>
+	<Script file="DBM.lua"/>
+	<Script file="TinyDPS.lua"/>
+</Ui>

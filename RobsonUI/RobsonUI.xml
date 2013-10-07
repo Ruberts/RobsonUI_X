@@ -1,0 +1,16 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="core\api.lua"/>
+	<Script file="core\functions.lua"/>
+	<Script file="modules\buffs\buffs.lua"/>
+	<Script file="modules\chat\chatframes.lua"/>
+	<Script file="modules\panels\panels.lua"/>
+	<Script file="modules\datatexts\datatexts.lua"/>
+	<Script file="modules\map\minimap.lua"/>
+	<Script file="modules\nameplates\nameplates.lua"/>
+	<Script file="modules\tooltip\tooltip.lua"/>
+	<Include file="modules\actionbars\actionbars.xml"/>
+	<Script file="modules\unitframes\plugins\oUF_BarFade.lua"/>
+	<Include file="modules\unitframes\unitframes.xml"/>
+	<Include file="modules\skins\skins.xml"/>
+	<Include file="modules\misc\misc.xml"/>
+</Ui>
