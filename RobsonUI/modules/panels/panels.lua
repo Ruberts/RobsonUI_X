@@ -73,19 +73,17 @@ local bar1 = CreateFrame("Frame", "RobsonBar1", UIParent)
 bar1:RobSkin()
 bar1:Size(120, 20)
 bar1:Point("TOPLEFT", UIParent, "TOPLEFT", 3, -3)
-bar1:CreateOverlay(self)	
 
 local bar2 = CreateFrame("Frame", "RobsonBar2", UIParent)
 bar2:RobSkin()
 bar2:Size(120, 20)
 bar2:Point("LEFT", RobsonBar1, "RIGHT", 4, 0)
-bar2:CreateOverlay(self)
 
 local bar3 = CreateFrame("Frame", "RobsonBar3", UIParent)
 bar3:RobSkin()
 bar3:Size(120, 20)
 bar3:Point("LEFT", RobsonBar2, "RIGHT", 4, 0)
-bar3:CreateOverlay(self)
+-- bar3:CreateOverlay(self)
 
 -- Minimap Panel Left
 TukuiMinimapStatsLeft:ClearAllPoints()

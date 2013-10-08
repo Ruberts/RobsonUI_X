@@ -4,15 +4,13 @@ local T, C, L, G = unpack(Tukui)
 local function SkinDropDownList(level, index)
 	for i = 1, UIDROPDOWNMENU_MAXLEVELS do
 		local menubackdrop = _G["DropDownList"..i.."MenuBackdrop"]
-		if menubackdrop and not menubackdrop.isSkinned then
-			menubackdrop:SetTemplate("Transparent")
-			menubackdrop.isSkinned = true
+		if menubackdrop and menubackdrop.isSkinned then
+			menubackdrop:RobSkin()
 		end
 		
 		local backdrop = _G["DropDownList"..i.."Backdrop"]
-		if backdrop and not backdrop.isSkinned then
-			backdrop:SetTemplate("Transparent")
-			backdrop.isSkinned = true
+		if backdrop and backdrop.isSkinned then
+			backdrop:RobSkin()
 		end
 	end
 end
