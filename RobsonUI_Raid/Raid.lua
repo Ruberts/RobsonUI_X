@@ -15,7 +15,7 @@ T.RaidFrameAttributes = function()
 		"showParty", true,
 		"showRaid", true,
 		"showPlayer", true,
-		"showSolo", false,
+		"showSolo", true,
 		"xoffset", T.Scale(3),
 		"yOffset", T.Scale(3),
 		"point", "LEFT",
@@ -139,11 +139,25 @@ T.PostUpdateRaidUnit = function(self)
 	-- Icons
 
 	local LFDRole = self.Health:CreateTexture(nil, "OVERLAY")
-	LFDRole:Height(5)
-	LFDRole:Width(5)
-	LFDRole:Point("BOTTOMRIGHT", -2, 2)
-	LFDRole:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\lfdicons.blp")
+	LFDRole:Size(14)
+	LFDRole:Point("RIGHT", -2, 0)
+	LFDRole.Override = T.SetGridGroupRole
 	self.LFDRole = LFDRole
+	
+	local ReadyCheck = self.Health:CreateTexture(nil, "OVERLAY")
+	ReadyCheck:Size(12)
+	ReadyCheck:SetPoint("CENTER")
+	self.ReadyCheck = ReadyCheck
+	
+	if C["unitframes"].showsymbols == true then
+		local RaidIcon = health:CreateTexture(nil, "OVERLAY")
+		RaidIcon:Height(18*T.raidscale)
+		RaidIcon:Width(18*T.raidscale)
+		RaidIcon:SetPoint("CENTER", self, "TOP")
+		RaidIcon:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\raidicons.blp")
+		RaidIcon.SetTexture = T.dummy
+		self.RaidIcon = RaidIcon
+	end
 end
 
 local TukuiRaidPosition = CreateFrame("Frame")

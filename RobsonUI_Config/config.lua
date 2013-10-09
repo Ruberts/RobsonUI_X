@@ -44,7 +44,7 @@ C["unitframes"] = {
 	["manaflash"] = false,
 	["targetpowerpvponly"] = false,
 	["onlyselfdebuffs"] = false,
-	["gradienthealth"] = false,
+	["gradient"] = false,
 	["raidunitdebuffwatch"] = true,
 	["classbar"] = true,
 	["focustarget"] = true,
@@ -52,6 +52,7 @@ C["unitframes"] = {
 	["healcomm"] = false,
 	["powerfade"] = true,
 	["gridhealthvertical"] = false,
+	["showsymbols"] = true,
 }
 
 C["classbar"] = {

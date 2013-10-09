@@ -44,6 +44,25 @@ hooksecurefunc(T, "PostNamePosition", function(self)
 	end
 end)
 
+hooksecurefunc(T, "SetGridGroupRole", function(self)
+	local lfdrole = self.LFDRole
+	local role = UnitGroupRolesAssigned(self.unit)
+
+	if role == "TANK" then
+		lfdrole:SetTexture[[Interface\AddOns\RobsonUI\media\textures\tank.tga]]
+		lfdrole:Show()
+	elseif role == "HEALER" then
+		lfdrole:SetTexture[[Interface\AddOns\RobsonUI\media\textures\healer.tga]]
+		lfdrole:Show()
+	elseif role == "DAMAGER" then
+		lfdrole:SetTexture[[Interface\AddOns\RobsonUI\media\textures\dps.tga]]
+		lfdrole:Show()
+	else
+		lfdrole:Hide()
+	end
+end)
+
+
 T.CreatePopup["ROBSONUI_SELECT_RAID_LAYOUT"] = {
 	question = L.Popups_SELECT_RAID_LAYOUT,
 	answer1 = "DPS, Tank",

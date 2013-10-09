@@ -33,6 +33,11 @@ local DataTextPosition = function(f, t, o)
 			t:SetParent(iright)
 			t:SetHeight(iright:GetHeight())
 			t:SetPoint("RIGHT", -15, 0)
+		elseif o == 15 then
+			t:ClearAllPoints()
+			t:SetParent(RobsonRightChat)
+			t:SetHeight(20)
+			t:SetPoint("BOTTOMLEFT", 10, 0)
 
 		end
 	else
