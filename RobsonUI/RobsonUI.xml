@@ -10,6 +10,7 @@
 	<Script file="modules\tooltip\tooltip.lua"/>
 	<Include file="modules\actionbars\actionbars.xml"/>
 	<Script file="modules\unitframes\plugins\oUF_BarFade.lua"/>
+	<Script file="modules\unitframes\plugins\oUF_DebuffHighlight.lua"/>
 	<Include file="modules\unitframes\unitframes.xml"/>
 	<Include file="modules\skins\skins.xml"/>
 	<Include file="modules\misc\misc.xml"/>

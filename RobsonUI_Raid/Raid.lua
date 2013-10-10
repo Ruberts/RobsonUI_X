@@ -15,7 +15,7 @@ T.RaidFrameAttributes = function()
 		"showParty", true,
 		"showRaid", true,
 		"showPlayer", true,
-		"showSolo", true,
+		"showSolo", false,
 		"xoffset", T.Scale(3),
 		"yOffset", T.Scale(3),
 		"point", "LEFT",
@@ -31,7 +31,7 @@ end
 T.PostUpdateRaidUnit = function(self)
 
 	self.panel:Kill()
-	self:SetBackdropColor( 0.0, 0.0, 0.0, 0.0 )
+	self:SetBackdropColor(0.0, 0.0, 0.0, 0.0)
 	self:SetFrameStrata("LOW")
 	self:CreateBorder(false, true)
 
@@ -135,6 +135,9 @@ T.PostUpdateRaidUnit = function(self)
 		self.RaidDebuffs.time:SetFont(T.CreateFontString())
 		self.RaidDebuffs.time:SetShadowOffset(0, 0)
 	end
+	
+	-- Debuff highlight
+	self.DebuffHighlightBackdrop = true
 
 	-- Icons
 
@@ -149,15 +152,18 @@ T.PostUpdateRaidUnit = function(self)
 	ReadyCheck:SetPoint("CENTER")
 	self.ReadyCheck = ReadyCheck
 	
-	if C["unitframes"].showsymbols == true then
-		local RaidIcon = health:CreateTexture(nil, "OVERLAY")
-		RaidIcon:Height(18*T.raidscale)
-		RaidIcon:Width(18*T.raidscale)
-		RaidIcon:SetPoint("CENTER", self, "TOP")
-		RaidIcon:SetTexture("Interface\\AddOns\\Tukui\\medias\\textures\\raidicons.blp")
-		RaidIcon.SetTexture = T.dummy
-		self.RaidIcon = RaidIcon
-	end
+	self.Leader = self.Health:CreateTexture(nil, "OVERLAY")
+	self.Leader:SetSize(12, 12)
+	self.Leader:SetPoint("TOPLEFT", self.Health, 1, 0)
+
+	self.Assistant = self.Health:CreateTexture(nil, "OVERLAY")
+	self.Assistant:SetSize(12, 12)
+	self.Assistant:SetPoint("TOPLEFT", self.Health, 1, 0)
+
+	self.MasterLooter = self.Health:CreateTexture(nil, "OVERLAY")
+	self.MasterLooter:SetSize(12, 12)
+	self.MasterLooter:SetPoint("RIGHT", self.Leader, 13, 0)
+
 end
 
 local TukuiRaidPosition = CreateFrame("Frame")
