@@ -2,9 +2,9 @@ local T, C, L, G = unpack(Tukui)
 
 if C["unitframes"].enable ~= true then return end
 
-if not oUF then return end
+local oUF = oUFTukui
 
-TukuiPlayer:Kill()
+if not oUF then return end
 
 local playerClass = select(2,UnitClass("player"))
 local CanDispel = {

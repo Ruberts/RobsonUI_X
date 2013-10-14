@@ -35,8 +35,9 @@ T.PostUpdateRaidUnit = function(self)
 	self:SetFrameStrata("LOW")
 	self:CreateBorder(false, true)
 
-	-- Health
-
+--------------------------------------------------------------
+-- Health
+--------------------------------------------------------------
 	self.Health:ClearAllPoints()
 	self.Health:SetAllPoints(self)
 	self.Health:SetStatusBarTexture(C["media"].normTex)
@@ -69,55 +70,49 @@ T.PostUpdateRaidUnit = function(self)
 	
 	if(C["unitframes"].unicolor == true) then
 		self:HookScript("OnEnter", function(self)
-			if( not UnitIsConnected( self.unit ) or UnitIsDead(self.unit) or UnitIsGhost(self.unit)) then return end
+			if( not UnitIsConnected(self.unit) or UnitIsDead(self.unit) or UnitIsGhost(self.unit)) then return end
 			local hover = RAID_CLASS_COLORS[select(2, UnitClass(self.unit))]
 			if(not hover) then return end
 			self.Health:SetStatusBarColor(hover.r, hover.g, hover.b)
 		end)
-
 		self:HookScript("OnLeave", function(self)
 			if(not UnitIsConnected(self.unit) or UnitIsDead(self.unit) or UnitIsGhost(self.unit)) then return end
 			self.Health:SetStatusBarColor(0.2, 0.2, 0.2, 1)
 		end)
 	end
 
-	if( C["unitframes"].gradienthealth == true and C["unitframes"].unicolor == true ) then
+	if(C["unitframes"].gradienthealth == true and C["unitframes"].unicolor == true) then
 		self:HookScript("OnEnter", function(self)
 			if(not UnitIsConnected(self.unit) or UnitIsDead(self.unit) or UnitIsGhost(self.unit)) then return end
 			local hover = RAID_CLASS_COLORS[select(2, UnitClass(self.unit))]
 			if(not hover) then return end
 			self.Health:SetStatusBarColor(hover.r, hover.g, hover.b)
 		end)
-
 		self:HookScript("OnLeave", function(self)
 			if(not UnitIsConnected(self.unit) or UnitIsDead(self.unit) or UnitIsGhost(self.unit)) then return end
 			local r, g, b = oUFTukui.ColorGradient(UnitHealth(self.unit) / UnitHealthMax(self.unit), unpack(C["unitframes"]["gradient"]))
-			self.Health:SetStatusBarColor( r, g, b )
-		end )
+			self.Health:SetStatusBarColor(r, g, b)
+		end)
 	end
-
-	-- Power.
-
-	self.Power:ClearAllPoints()
-	self.Power:SetPoint("TOP", self, "BOTTOM", 0, -3)
-	self.Power:SetHeight(2)
-	self.Power:SetWidth(68)
-	self.Power:SetFrameLevel(self:GetFrameLevel())
-	self.Power:CreateBackdrop("Default")
+--------------------------------------------------------------
+-- Power
+--------------------------------------------------------------
 	self.Power:Kill()
 	
-	-- Name
-	
+--------------------------------------------------------------
+-- Name
+--------------------------------------------------------------
 	self.Name:ClearAllPoints()
 	self.Name:SetParent(self.Health)
 	self.Name:SetPoint("LEFT", self.Health, "RIGHT", 4, 0)
 	self.Name:SetShadowOffset(0, 0)
 	self.Name:SetFont(T.CreateFontString())
 	self.Name:SetAlpha(1)
-
-	-- Debuffs
 	
-	if( C["unitframes"]["raidunitdebuffwatch"] == true ) then
+--------------------------------------------------------------
+-- Auras
+--------------------------------------------------------------
+	if(C["unitframes"]["raidunitdebuffwatch"] == true) then
 		self.RaidDebuffs:Height(16 * C["unitframes"]["gridscale"])
 		self.RaidDebuffs:Width(16 * C["unitframes"]["gridscale"])
 		self.RaidDebuffs:Point("LEFT", self.Health, 2, 0)
@@ -136,11 +131,20 @@ T.PostUpdateRaidUnit = function(self)
 		self.RaidDebuffs.time:SetShadowOffset(0, 0)
 	end
 	
-	-- Debuff highlight
-	self.DebuffHighlightBackdrop = true
-
-	-- Icons
-
+	if (C["unitframes"].debuffhighlight == true) then
+		local dbh = self.Health:CreateTexture(nil, "OVERLAY")
+		dbh:SetAllPoints(self.Health)
+		dbh:SetTexture(C["media"].normTex)
+		dbh:SetBlendMode("ADD")
+		dbh:SetVertexColor(0, 0, 0, 0)
+		self.DebuffHighlight = dbh
+		
+		self.DebuffHighlightFilter = true
+	end
+	
+--------------------------------------------------------------
+-- Icons
+--------------------------------------------------------------
 	local LFDRole = self.Health:CreateTexture(nil, "OVERLAY")
 	LFDRole:Size(14)
 	LFDRole:Point("RIGHT", -2, 0)
@@ -165,7 +169,9 @@ T.PostUpdateRaidUnit = function(self)
 	self.MasterLooter:SetPoint("RIGHT", self.Leader, 13, 0)
 
 end
-
+--------------------------------------------------------------
+-- Position
+--------------------------------------------------------------
 local TukuiRaidPosition = CreateFrame("Frame")
 TukuiRaidPosition:RegisterEvent("PLAYER_LOGIN")
 TukuiRaidPosition:SetScript("OnEvent", function(self, event)

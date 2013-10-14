@@ -1,18 +1,15 @@
 local T, C, L, G = unpack(Tukui)
 
 if C["media"].pixel then
-	-- Pixelfont
 	T.CreateFontString = function()
 			return C["media"].pixelfont, 12, "MONOCHROMEOUTLINE"
 		end
 else	
-	-- Normalfont
 	T.CreateFontString = function()
 			return C["media"].expressway, 11, "THINOUTLINE"
 		end
 end
 
--- Datatextinfo Panels	
 T.InfoLeftRightWidth = 372
 
 local function CreateOverlay( frame )

@@ -46,6 +46,7 @@ C["unitframes"] = {
 	["onlyselfdebuffs"] = false,
 	["gradient"] = false,
 	["raidunitdebuffwatch"] = false,
+	["debuffhighlight"] = true,
 	["classbar"] = true,
 	["focustarget"] = true,
 	["showraidpets"] = false,
@@ -150,7 +151,7 @@ C["datatext"] = {
 	["talent"] = 0,
 	["calltoarms"] = 0,
 
-	["battleground"] = true,
+	["battleground"] = false,
 	["time24"] = true,
 	["localtime"] = false,
 	["fontsize"] = 12,

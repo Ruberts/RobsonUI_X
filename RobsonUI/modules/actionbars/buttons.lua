@@ -20,6 +20,7 @@ local button_skin = {
 					TukuiBar5ButtonTop,
 					TukuiBar5ButtonBottom,
 					TukuiExitVehicleButtonLeft,
+					TukuiExitVehicleButtonRight,
 					}
 for _, button in pairs(button_skin) do
 	button:RobSkin()
@@ -62,7 +63,5 @@ TukuiExitVehicleButtonLeft:Point("TOP", TukuiBar1, "BOTTOM", 0, - 3)
 TukuiExitVehicleButtonLeft:SetFrameStrata("HIGH")
 TukuiExitVehicleButtonLeft.text:SetFont(T.CreateFontString())
 
-TukuiExitVehicleButtonRight:SetTemplate("Default")
-TukuiExitVehicleButtonRight:SetFrameStrata("HIGH")
-TukuiExitVehicleButtonRight.text:SetFont(T.CreateFontString())
-TukuiExitVehicleButtonRight:Disable()
+TukuiExitVehicleButtonRight:ClearAllPoints()
+TukuiExitVehicleButtonRight:Hide()

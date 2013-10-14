@@ -22,25 +22,45 @@ for _, panel in pairs(kill_panel) do
 	panel:Kill()
 end
 
-local shadow_panel = {
-					-- TukuiBar1,
-					-- TukuiBar2,
-					-- TukuiBar3,
-					-- TukuiBar4,
-					-- TukuiBar5,
-					-- TukuiPetBar,
-					-- TukuiChatBackgroundLeft,
-					-- TukuiTabsLeftBackground,
-					-- TukuiChatBackgroundRight,
-					-- TukuiTabsRightBackground,
-					-- TukuiInfoLeft,
-					-- TukuiInfoRight
-					}
-for _, panel in pairs(shadow_panel) do
-	panel:CreateShadow()
+TukuiBar1:ClearAllPoints()
+TukuiBar1:Point("BOTTOM", UIParent, "BOTTOM", 0, 25)
+TukuiBar1:RobSkin()
+if TukuiBar4:IsShown() then
+TukuiBar1:Height((T.buttonsize * 2) + (T.buttonspacing * 3))
 end
 
+TukuiBar4:HookScript("OnHide", function()
+TukuiBar1:Height((T.buttonsize * 1) + (T.buttonspacing * 2))
+end)
+
+TukuiBar4:HookScript("OnShow", function()
+TukuiBar1:Height((T.buttonsize * 2) + (T.buttonspacing * 3))
+end)
+
+TukuiBar1:RobSkin()
+
+TukuiBar2:RobSkin()
+
+TukuiBar3:RobSkin()
+
+TukuiBar4:ClearAllPoints()
+TukuiBar4:Point("BOTTOM", TukuiBar1, "BOTTOM", 0, 0)
+TukuiBar4:RobSkin()
+TukuiBar4:SetBackdrop(nil)
+
+TukuiBar5:ClearAllPoints()
+TukuiBar5:SetPoint("RIGHT", UIParent, "RIGHT", -5, 0)
+TukuiBar5:RobSkin()
+
+TukuiPetBar:RobSkin()
+
+TukuiMinimapStatsLeft:ClearAllPoints()
+TukuiMinimapStatsLeft:Point("BOTTOM", TukuiMinimap, "BOTTOM", 0, 0)
+TukuiMinimapStatsLeft:StripTextures()
+
+--------------------------------------------------------------
 -- RobsonUI Panels
+--------------------------------------------------------------
 local robsonleftchatbg = CreateFrame("Frame", "RobsonLeftChat", UIParent)
 robsonleftchatbg:Size(370, 120)
 robsonleftchatbg:Point("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 10, 10)
@@ -84,39 +104,3 @@ bar3:RobSkin()
 bar3:Size(120, 20)
 bar3:Point("LEFT", RobsonBar2, "RIGHT", 4, 0)
 -- bar3:CreateOverlay(self)
-
--- Minimap Panel Left
-TukuiMinimapStatsLeft:ClearAllPoints()
-TukuiMinimapStatsLeft:Point("BOTTOM", TukuiMinimap, "BOTTOM", 0, 0)
-TukuiMinimapStatsLeft:StripTextures()
-
--- Actionbars
-TukuiBar1:ClearAllPoints()
-TukuiBar1:Point("BOTTOM", UIParent, "BOTTOM", 0, 25)
-TukuiBar1:RobSkin()
-if TukuiBar4:IsShown() then
-TukuiBar1:Height((T.buttonsize * 2) + (T.buttonspacing * 3))
-end
-
-TukuiBar4:HookScript("OnHide", function()
-TukuiBar1:Height((T.buttonsize * 1) + (T.buttonspacing * 2))
-end)
-
-TukuiBar4:HookScript("OnShow", function()
-TukuiBar1:Height((T.buttonsize * 2) + (T.buttonspacing * 3))
-end)
-
-TukuiBar2:RobSkin()
-
-TukuiBar3:RobSkin()
-
-TukuiBar4:ClearAllPoints()
-TukuiBar4:Point("BOTTOM", TukuiBar1, "BOTTOM", 0, 0)
-TukuiBar4:RobSkin()
-TukuiBar4:SetBackdrop(nil)
-
-TukuiBar5:ClearAllPoints()
-TukuiBar5:SetPoint("RIGHT", UIParent, "RIGHT", -5, 0)
-TukuiBar5:RobSkin()
-
-TukuiPetBar:RobSkin()
