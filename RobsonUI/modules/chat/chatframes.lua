@@ -25,16 +25,6 @@ local function SetTabStyle(frame)
 	_G[chat .. "EditBox"].backdrop:SetAllPoints(RobsonEditBox)
 end
 
--- GeneralDockManager:ClearAllPoints()
--- GeneralDockManager:Width(TukuiInfoLeft:GetWidth())
--- GeneralDockManager:Point("BOTTOM", TukuiInfoLeft, 0, 0)
-	-- --On bottom for undocked chat frames also
--- hooksecurefunc("FCF_SetTabPosition", function(chatFrame,x)
-	-- local chatTab = _G[chatFrame:GetName().."Tab"];
-	-- chatTab:ClearAllPoints()
-	-- chatTab:Point("LEFT", TukuiInfoRight, 0, 6)
--- end)
-
 local function SetupChatStyle(self)
 	for i = 1, NUM_CHAT_WINDOWS do
 	local frame = _G[format( "ChatFrame%s", i )]
@@ -52,7 +42,6 @@ end )
 BNToastFrame:HookScript("OnShow", function(self)
 	self:ClearAllPoints()
 	self:Point("TOPLEFT", RobsonBar1, "BOTTOMLEFT", 0, -4)
-	self:SetTemplate("Transparent")
 	self:RobSkin()
 end)
 

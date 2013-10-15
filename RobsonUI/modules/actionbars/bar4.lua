@@ -1,10 +1,4 @@
----------------------------------------------------------------------------------------------
--- Project: AsphyxiaUI Version 6.0
----------------------------------------------------------------------------------------------
-
-local T, C, L, G = unpack( Tukui )
-
-if( C["actionbar"]["enable"] ~= true ) then return end
+local T, C, L, G = unpack(Tukui)
 
 local bar = TukuiBar4
 bar:SetAlpha(1)
@@ -26,5 +20,4 @@ for i= 1, 12 do
 	
 	G.ActionBars.Bar4["Button"..i] = b
 end
-
 RegisterStateDriver(bar, "visibility", "[vehicleui][petbattle][overridebar] hide; show")

@@ -12,8 +12,8 @@ end
 
 T.InfoLeftRightWidth = 372
 
-local function CreateOverlay( frame )
-	if( frame.overlay ) then return end
+local function CreateOverlay(frame)
+	if(frame.overlay) then return end
 
 	local overlay = frame:CreateTexture(frame:GetName() and frame:GetName() .. "Overlay" or nil, "BORDER", frame)
 	overlay:ClearAllPoints()
@@ -33,9 +33,9 @@ local function CreateBorder(f, i, o)
 		border:SetBackdrop({
 			edgeFile = C["media"].blank, 
 			edgeSize = T.mult, 
-			insets = { left = T.mult, right = T.mult, top = T.mult, bottom = T.mult }
+			insets = {left = T.mult, right = T.mult, top = T.mult, bottom = T.mult}
 		})
-		border:SetBackdropBorderColor(0,0,0)
+		border:SetBackdropBorderColor(0, 0, 0)
 		f.iborder = border
 	end
 	
@@ -48,9 +48,9 @@ local function CreateBorder(f, i, o)
 		border:SetBackdrop({
 			edgeFile = C["media"].blank, 
 			edgeSize = T.mult, 
-			insets = { left = T.mult, right = T.mult, top = T.mult, bottom = T.mult }
+			insets = {left = T.mult, right = T.mult, top = T.mult, bottom = T.mult}
 		})
-		border:SetBackdropBorderColor(0,0,0)
+		border:SetBackdropBorderColor(0, 0, 0)
 		f.oborder = border
 	end
 end
@@ -62,9 +62,9 @@ local function SetBorder(f, i, o)
 		border:Point("TOPLEFT", T.mult, -T.mult)
 		border:Point("BOTTOMRIGHT", -T.mult, T.mult)
 		border:SetBackdrop({
-			edgeFile = C.media.blank, 
+			edgeFile = C["media"].blank, 
 			edgeSize = T.mult, 
-			insets = { left = T.mult, right = T.mult, top = T.mult, bottom = T.mult }
+			insets = {left = T.mult, right = T.mult, top = T.mult, bottom = T.mult}
 		})
 		border:SetBackdropBorderColor(0, 0, 0)
 		f.iborder = border
@@ -79,7 +79,7 @@ local function SetBorder(f, i, o)
 		border:SetBackdrop({
 			edgeFile = C.media.blank, 
 			edgeSize = T.mult, 
-			insets = { left = T.mult, right = T.mult, top = T.mult, bottom = T.mult }
+			insets = {left = T.mult, right = T.mult, top = T.mult, bottom = T.mult}
 		})
 		border:SetBackdropBorderColor(0, 0, 0)
 		f.oborder = border
@@ -111,7 +111,7 @@ local function addapi(object)
 	if not object.RobSkin then mt.RobSkin = RobSkin end
 end
 
-local handled = { ["Frame"] = true }
+local handled = {["Frame"] = true}
 local object = CreateFrame("Frame")
 addapi(object)
 addapi(object:CreateTexture())

@@ -104,7 +104,7 @@ if C["unitframes"].castbar == true then
 			self.Castbar:Point("BOTTOM", self, "TOP", 0, 150)
 			self.Castbar.button:ClearAllPoints()
 			self.Castbar.button:SetPoint("BOTTOM", self.Castbar, "TOP", 0, 5)
-			self.Castbar.button:Size(24)
+			self.Castbar.button:Size(20)
 			self.Castbar.button.shadow:Kill()
 			self.Castbar.icon:Point("TOPLEFT", self.Castbar.button, 0, 0)
 			self.Castbar.icon:Point("BOTTOMRIGHT", self.Castbar.button, 0, 0)

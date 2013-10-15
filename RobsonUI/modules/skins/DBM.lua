@@ -236,11 +236,11 @@ hooksecurefunc(DBM.BossHealth, "Show", SkinBossTitle)
 hooksecurefunc(DBM.BossHealth, "AddBoss", SkinBoss)
 hooksecurefunc(DBM.BossHealth, "UpdateSettings", SkinBoss)
 hooksecurefunc(DBM.RangeCheck, "Show", function()
-	DBMRangeCheck:SetTemplate("Transparent")
-	DBMRangeCheckRadar:SetTemplate("Transparent")
+	DBMRangeCheck:RobSkin()
+	DBMRangeCheckRadar:RobSkin()
 end)
 hooksecurefunc(DBM.InfoFrame, "Show", function()
-	DBMInfoFrame:SetTemplate("Transparent")
+	DBMInfoFrame:RobSkin()
 end)
 
 if croprwicons then
@@ -289,7 +289,7 @@ local UploadDBM = function()
 	DBT_SavedOptions["DBM"].Scale = 1
 	DBT_SavedOptions["DBM"].HugeScale = 1
 	DBT_SavedOptions["DBM"].HugeWidth = 300
-	DBT_SavedOptions["DBM"].Width = 351
+	DBT_SavedOptions["DBM"].Width = 347
 	DBT_SavedOptions["DBM"].BarXOffset = 0
 	DBT_SavedOptions["DBM"].BarYOffset = 3
 	DBT_SavedOptions["DBM"].IconLeft = true
@@ -297,7 +297,7 @@ local UploadDBM = function()
 	DBT_SavedOptions["DBM"].Texture = C["media"].normTex
 	DBT_SavedOptions["DBM"].IconRight = false
 	DBT_SavedOptions["DBM"].TimerPoint = "RIGHT"
-	DBT_SavedOptions["DBM"].TimerX = -181
+	DBT_SavedOptions["DBM"].TimerX = -183
 	DBT_SavedOptions["DBM"].TimerY = -400
 	
 	

@@ -43,7 +43,7 @@ end
 
 for i = 1, #Buttons do
 	local Button = Buttons[i]
-	Buttons[i]:RobSkin()
+	Buttons[i]:CreateOverlay(self)
 	if text then
 		local t = Buttons[i]:CreateFontString(nil, "OVERLAY")
 		t:SetFont(C["media"].pixelfont, 12)

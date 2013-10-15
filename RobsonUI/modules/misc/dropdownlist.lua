@@ -6,11 +6,13 @@ local function SkinDropDownList(level, index)
 		local menubackdrop = _G["DropDownList"..i.."MenuBackdrop"]
 		if menubackdrop and menubackdrop.isSkinned then
 			menubackdrop:RobSkin()
+			menubackdrop.isSkinned = true
 		end
 		
 		local backdrop = _G["DropDownList"..i.."Backdrop"]
 		if backdrop and backdrop.isSkinned then
 			backdrop:RobSkin()
+			backdrop.isSkinned = true
 		end
 	end
 end

@@ -31,13 +31,13 @@ end
 T.PostUpdateRaidUnit = function(self)
 
 	self.panel:Kill()
-	self:SetBackdropColor(0.0, 0.0, 0.0, 0.0)
-	self:SetFrameStrata("LOW")
+	self:SetBackdropColor(0, 0, 0, 0)
+	self:SetFrameLevel(1)
 	self:CreateBorder(false, true)
 
---------------------------------------------------------------
--- Health
---------------------------------------------------------------
+	--------------------------------------------------------------
+	-- Health
+	--------------------------------------------------------------
 	self.Health:ClearAllPoints()
 	self.Health:SetAllPoints(self)
 	self.Health:SetStatusBarTexture(C["media"].normTex)
@@ -94,14 +94,14 @@ T.PostUpdateRaidUnit = function(self)
 			self.Health:SetStatusBarColor(r, g, b)
 		end)
 	end
---------------------------------------------------------------
--- Power
---------------------------------------------------------------
+	--------------------------------------------------------------
+	-- Power
+	--------------------------------------------------------------
 	self.Power:Kill()
 	
---------------------------------------------------------------
--- Name
---------------------------------------------------------------
+	--------------------------------------------------------------
+	-- Name
+	--------------------------------------------------------------
 	self.Name:ClearAllPoints()
 	self.Name:SetParent(self.Health)
 	self.Name:SetPoint("LEFT", self.Health, "RIGHT", 4, 0)
@@ -109,9 +109,9 @@ T.PostUpdateRaidUnit = function(self)
 	self.Name:SetFont(T.CreateFontString())
 	self.Name:SetAlpha(1)
 	
---------------------------------------------------------------
--- Auras
---------------------------------------------------------------
+	--------------------------------------------------------------
+	-- Auras
+	--------------------------------------------------------------
 	if(C["unitframes"]["raidunitdebuffwatch"] == true) then
 		self.RaidDebuffs:Height(16 * C["unitframes"]["gridscale"])
 		self.RaidDebuffs:Width(16 * C["unitframes"]["gridscale"])
@@ -142,9 +142,9 @@ T.PostUpdateRaidUnit = function(self)
 		self.DebuffHighlightFilter = true
 	end
 	
---------------------------------------------------------------
--- Icons
---------------------------------------------------------------
+	--------------------------------------------------------------
+	-- Icons
+	--------------------------------------------------------------
 	local LFDRole = self.Health:CreateTexture(nil, "OVERLAY")
 	LFDRole:Size(14)
 	LFDRole:Point("RIGHT", -2, 0)

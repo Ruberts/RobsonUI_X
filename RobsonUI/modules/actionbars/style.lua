@@ -34,34 +34,25 @@ local function ActionBarStyleButtons(self)
 	Icon:Point("TOPLEFT", Button, 2, -2)
 	Icon:Point("BOTTOMRIGHT", Button, -2, 2)
 	
-	Button:CreateBorder(false, false)
+	Button:CreateBorder(true, false)
 	
 	Button.backdrop:HideInsets()
 	Button.backdrop:SetBackdropBorderColor(0,0,0,0)
 	Button.backdrop:SetBackdropColor(0,0,0,0)
 
 	HotKey:ClearAllPoints()
-	HotKey:Point( "TOPRIGHT", 0, -3 )
-	HotKey:SetFont( T.CreateFontString() )
+	HotKey:Point("TOPRIGHT", 0, -3)
+	HotKey:SetFont(T.CreateFontString())
 	HotKey.ClearAllPoints = T.dummy
 	HotKey.SetPoint = T.dummy
 	
-	--Border for the action bar.
-	local buttonBG = CreateFrame("Frame", buttonBG, Button.backdrop)	
-	buttonBG:ClearAllPoints()
-	buttonBG:SetPoint("TOPLEFT", 2, -2)
-	buttonBG:SetPoint("BOTTOMRIGHT", -2, 2)
-	buttonBG:Size(1, 1)
-	buttonBG:RobSkin()
-	buttonBG:SetFrameLevel(Button.backdrop:GetFrameLevel() - 1)
-
-	if( C["actionbar"]["hotkey"] ~= true ) then
-		HotKey:SetText( "" )
+	if(C["actionbar"]["hotkey"] ~= true) then
+		HotKey:SetText("")
 		HotKey:Kill()
 	end
 end
 
-hooksecurefunc( "ActionButton_Update", ActionBarStyleButtons )
+hooksecurefunc("ActionButton_Update", ActionBarStyleButtons)
 
 function T.StyleActionBarPetButton(normal, button, icon, name, pet)
 	button:SetNormalTexture("")
@@ -84,15 +75,7 @@ function T.StyleActionBarPetButton(normal, button, icon, name, pet)
 		icon:ClearAllPoints()
 		icon:SetPoint("TOPLEFT", button, 0, 0)
 		icon:SetPoint("BOTTOMRIGHT", button, 0, 0)
-		
-		--Border for the action bar.
-		local buttonBG = CreateFrame("Frame", buttonBG, button)	
-		buttonBG:ClearAllPoints()
-		buttonBG:SetPoint("TOPLEFT", 2, -2)
-		buttonBG:SetPoint("BOTTOMRIGHT", -2, 2)
-		buttonBG:Size(1, 1)
-		buttonBG:RobSkin()
-		buttonBG:SetFrameLevel(button:GetFrameLevel() - 1)
+
 		if pet then			
 			if T.petbuttonsize < 30 then
 				local autocast = _G[name.."AutoCastable"]
@@ -133,14 +116,6 @@ function T.StyleActionBarShiftButton(normal, button, icon, name, pet)
 		icon:SetPoint("TOPLEFT", button, 0, 0)
 		icon:SetPoint("BOTTOMRIGHT", button, 0, 0)
 		
-		--Border for the action bar.
-		local buttonBG = CreateFrame("Frame", buttonBG, button)	
-		buttonBG:ClearAllPoints()
-		buttonBG:SetPoint("TOPLEFT", 0, 0)
-		buttonBG:SetPoint("BOTTOMRIGHT", 0, 0)
-		buttonBG:Size(1, 1)
-		buttonBG:RobSkin()
-		buttonBG:SetFrameLevel(button:GetFrameLevel() - 1)
 		if pet then			
 			if T.petbuttonsize < 30 then
 				local autocast = _G[name.."AutoCastable"]

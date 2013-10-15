@@ -1,18 +1,5 @@
 local T, C, L, G = unpack(Tukui)
 
-local button_shadow = {
-					-- TukuiBar2Button,
-					-- TukuiBar3Button,
-					-- TukuiBar4Button,
-					-- TukuiBar5ButtonTop,
-					-- TukuiBar5ButtonBottom,
-					-- TukuiExitVehicleButtonLeft,
-					-- TukuiExitVehicleButtonRight,
-					}
-for _, button in pairs(button_shadow) do
-	button:CreateShadow()
-end
-
 local button_skin = {
 					TukuiBar2Button,
 					TukuiBar3Button,

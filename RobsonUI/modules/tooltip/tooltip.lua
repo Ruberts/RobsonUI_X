@@ -11,7 +11,6 @@ TukuiAltPowerBar:HookScript("OnHide", function(self)
 	anchor:Point("BOTTOMRIGHT", RobsonRightChat, "TOPRIGHT", 0, -24)
 end)
 
-
 local TukuiTooltip = CreateFrame("Frame", "TukuiTooltip", UIParent)
 local _G = getfenv(0)
 local GameTooltip, GameTooltipStatusBar = _G["GameTooltip"], _G["GameTooltipStatusBar"]
@@ -107,7 +106,7 @@ local function UpdateTooltip(self)
 		elseif point == "BOTTOMRIGHT" or point == "RIGHT" then
 			if TukuiBags and TukuiBags:IsShown() then
 				self:ClearAllPoints()
-				self:SetPoint("BOTTOMRIGHT", TukuiTooltipAnchor, "TOPRIGHT", 0, x)			
+				self:SetPoint("BOTTOMRIGHT", TukuiBags, "TOPRIGHT", 0, 3)			
 			else
 				self:ClearAllPoints()
 				self:SetPoint("BOTTOMRIGHT", TukuiTooltipAnchor, "TOPRIGHT", 0, x)

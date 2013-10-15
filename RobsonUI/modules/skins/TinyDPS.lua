@@ -18,10 +18,10 @@ frame:SetScript("OnEvent", function(self, event)
 		tdps.width = TukuiMinimap:GetWidth()
 		tdps.spacing = 2
 		tdps.barHeight = 16
-		tdps.hideOOC = false
+		tdps.hideOOC = true
 		tdps.showMinimapButton = false
 		tdps.showRank = false
-		font.name = C.media.pixelfont
+		font.name = C["media"].pixelfont
 		font.size = 12
 		font.outline = "MONOCHROMEOUTLINE"
 		font.shadow = 0

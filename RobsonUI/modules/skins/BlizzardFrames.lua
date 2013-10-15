@@ -230,13 +230,13 @@ end
 hooksecurefunc(Stuffing, "Layout", BagsLayout)
 
 TukuiBags:ClearAllPoints()
-TukuiBags:SetPoint("RIGHT", UIParent, "RIGHT", -10, 0)
+TukuiBags:SetPoint("BOTTOM", RobsonRightChat, "TOP", 0, 3)
 
 local function BagsUpdateBankPosition(self, value)
 local bag = _G["Tukui"..value]
 if(value == "Bank") then
 	bag:ClearAllPoints()
-		bag:SetPoint("LEFT", UIParent, "LEFT", 10, 0)
+		bag:SetPoint("BOTTOM", RobsonLeftChat, "TOP", 0, 3)
 	end	
 end
 hooksecurefunc(Stuffing, "CreateBagFrame", BagsUpdateBankPosition)

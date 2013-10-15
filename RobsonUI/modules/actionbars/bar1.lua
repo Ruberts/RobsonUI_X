@@ -1,8 +1,4 @@
-
-
-local T, C, L, G = unpack( Tukui )
-
-if( C["actionbar"]["enable"] ~= true ) then return end
+local T, C, L, G = unpack(Tukui)
 
 local bar = TukuiBar1
 
@@ -12,7 +8,7 @@ bar:HookScript("OnEvent", function(self, event, unit)
 
 		for i = 1, 12 do
 			button = _G["ActionButton" .. i]
-			button:SetSize( T.buttonsize, T.buttonsize)
+			button:SetSize(T.buttonsize, T.buttonsize)
 			button:ClearAllPoints()
 			button:SetParent(bar)
 			button:SetFrameStrata("BACKGROUND")
@@ -26,4 +22,4 @@ bar:HookScript("OnEvent", function(self, event, unit)
 			end
 		end
 	end
-end )
+end)

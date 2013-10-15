@@ -1,8 +1,4 @@
----------------------------------------------------------------------------------------------
--- Project: AsphyxiaUI Version 6.0
----------------------------------------------------------------------------------------------
-
-local T, C, L, G = unpack( Tukui )
+local T, C, L, G = unpack(Tukui)
 
 local bar = TukuiBar3
 MultiBarBottomRight:SetParent(bar)
@@ -31,5 +27,4 @@ for i=7, 12 do
 	local b2 = _G["MultiBarBottomRightButton1"]
 	b:SetFrameLevel(b2:GetFrameLevel() - 2)
 end
-
 RegisterStateDriver(bar, "visibility", "[vehicleui][petbattle][overridebar] hide; show")

@@ -80,7 +80,7 @@ end
 if C["unitframes"].castbar == true then
 	self.Castbar:ClearAllPoints()
 	self.Castbar:SetHeight(20)
-	self.Castbar:Point("BOTTOM", TukuiBar1, "TOP", 0, 4)
+	self.Castbar:Point("BOTTOM", TukuiBar1, "TOP", 0, 3)
 	self.Castbar:RobSkin()
 	
 	self.Castbar.bg:SetVertexColor(0.05, 0.05, 0.05, .2)
@@ -92,7 +92,6 @@ if C["unitframes"].castbar == true then
 	Spark:Width(14) 
 	Spark:Height(self.Castbar:GetHeight() * 2)
 	Spark:Point("LEFT", self.Castbar:GetStatusBarTexture(), "RIGHT", -6, 0)
-
 	self.Castbar.Spark = Spark
 
 	if( C["unitframes"].cbicons == true ) then
