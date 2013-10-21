@@ -43,6 +43,7 @@ BNToastFrame:HookScript("OnShow", function(self)
 	self:ClearAllPoints()
 	self:Point("TOPLEFT", RobsonBar1, "BOTTOMLEFT", 0, -4)
 	self:RobSkin()
+	self.shadow:Kill()
 end)
 
 T.SetDefaultChatPosition = function(frame)

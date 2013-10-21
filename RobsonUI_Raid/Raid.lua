@@ -40,6 +40,7 @@ T.PostUpdateRaidUnit = function(self)
 	panel:Point("BOTTOMLEFT", self, "BOTTOMLEFT", 0, 0)
 	panel:Size(100, 20)
 	panel:SetFrameLevel(1)
+	panel:RobSkin()
 	self.panel = panel
 
 	--------------------------------------------------------------

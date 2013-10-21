@@ -363,6 +363,7 @@ local CLASS_FILTERS = {
 				CreateSpellEntry( 53390 ), -- Tidal Waves Rank 1/2/3
 				CreateSpellEntry( 77762 ), -- Lava Surge
 				CreateSpellEntry( 108271 ), -- Astral Shift
+				CreateSpellEntry( 114050 ), -- Ascendance
 			},
 			procs = {
 				CreateSpellEntry( 53817 ), -- Maelstrom Weapon
