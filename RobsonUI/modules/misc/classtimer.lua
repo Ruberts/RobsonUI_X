@@ -55,7 +55,8 @@ local TRINKET_FILTER = {
 		CreateSpellEntry( 139133 ), -- Mastermind
 		CreateSpellEntry( 138788 ), -- Electrified
 		CreateSpellEntry( 137590 ), -- Tempus Repit
-	};
+		CreateSpellEntry( 146046 ), -- Expanded Mind
+};
 	
 local CLASS_FILTERS = {
 		MONK = { 
@@ -214,6 +215,7 @@ local CLASS_FILTERS = {
 				CreateSpellEntry( 118271 ), -- Impact
 				CreateSpellEntry( 132210 ), -- Pyromaniac
 				CreateSpellEntry( 114923 ), -- Nether Tempest
+				CreateSpellEntry( 11366 ), -- Pyroblast
 			},
 			player = {
 				CreateSpellEntry( 36032 ), -- Arcane Blast
@@ -350,6 +352,7 @@ local CLASS_FILTERS = {
 				CreateSpellEntry( 77657 ), -- Searing Flames
 				CreateSpellEntry( 16166 ), -- Elemental Mastery
 				CreateSpellEntry( 77661 ), -- Searing Flame
+				CreateSpellEntry( 115798 ), -- Weakened Blows
 			},
 				player = {
 				--CreateSpellEntry( 324 ), -- Lightning Shield
@@ -1011,18 +1014,18 @@ targetDataSource:SetSortDirection( SORT_DIRECTION )
 playerDataSource:SetSortDirection( SORT_DIRECTION )
 trinketDataSource:SetSortDirection( SORT_DIRECTION )
 
-if ( classFilter ) then
-	targetDataSource:AddFilter( classFilter.target, TARGET_BAR_COLOR, TARGET_DEBUFF_COLOR );	
-	playerDataSource:AddFilter( classFilter.player, PLAYER_BAR_COLOR, PLAYER_DEBUFF_COLOR )
-	trinketDataSource:AddFilter( classFilter.procs, TRINKET_BAR_COLOR )
+if (classFilter) then
+	targetDataSource:AddFilter(classFilter.target, TARGET_BAR_COLOR, TARGET_DEBUFF_COLOR);	
+	playerDataSource:AddFilter(classFilter.player, PLAYER_BAR_COLOR, PLAYER_DEBUFF_COLOR)
+	trinketDataSource:AddFilter(classFilter.procs, TRINKET_BAR_COLOR)
 end
-trinketDataSource:AddFilter( TRINKET_FILTER, TRINKET_BAR_COLOR )
+trinketDataSource:AddFilter(TRINKET_FILTER, TRINKET_BAR_COLOR)
 
 local yOffset = 5
 local xOffset = 0
 
 local cltimermover = CreateFrame("Frame", "Classtimermover", UIParent)
-cltimermover:Height(C["classtimer"].barheight	);
+cltimermover:Height(C["classtimer"].barheight);
 if (T.myclass == "PRIEST" or T.myclass == "MONK" or T.myclass == "WARRIOR" or T.myclass == "DRUID" or T.myclass == "DEATHKNIGHT" or T.myclass == "SHAMAN") then
 	cltimermover:Point("BOTTOMLEFT", G.UnitFrames.Player, "TOPLEFT", xOffset, 1)
 elseif (T.myclass == "MAGE" and cltimermover:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")) then
@@ -1030,7 +1033,7 @@ elseif (T.myclass == "MAGE" and cltimermover:RegisterEvent("ACTIVE_TALENT_GROUP_
 else
 	cltimermover:Point("BOTTOMLEFT", G.UnitFrames.Player, "TOPLEFT", xOffset, -5)
 end
-cltimermover:Point( "BOTTOMRIGHT", G.UnitFrames.Player, "TOPRIGHT", 0, yOffset )
+cltimermover:Point("BOTTOMRIGHT", G.UnitFrames.Player, "TOPRIGHT", 0, yOffset)
 cltimermover:SetTemplate("Default")
 cltimermover:SetBackdropBorderColor(1, 0, 0, 1)
 cltimermover:SetFrameStrata("HIGH")
@@ -1042,10 +1045,10 @@ cltimermover.text:SetPoint("CENTER")
 cltimermover.text:SetText("Move Classtimer Player")
 tinsert(T.AllowFrameMoving, cltimermover)
 
-local playerFrame = CreateAuraBarFrame( playerDataSource, G.UnitFrames.Player );
-playerFrame:SetHiddenHeight( -yOffset );
-playerFrame:Point( "BOTTOMLEFT", cltimermover, "TOPLEFT", xOffset, -yOffset*2)
-playerFrame:Point( "BOTTOMRIGHT", cltimermover, "TOPRIGHT", 0, -yOffset*2 )
+local playerFrame = CreateAuraBarFrame(playerDataSource, G.UnitFrames.Player);
+playerFrame:SetHiddenHeight(-yOffset);
+playerFrame:Point("BOTTOMLEFT", cltimermover, "TOPLEFT", xOffset, -yOffset*2)
+playerFrame:Point("BOTTOMRIGHT", cltimermover, "TOPRIGHT", 0, -yOffset*2)
 
 local trinketFrame = CreateAuraBarFrame( trinketDataSource, G.UnitFrames.Player )
 trinketFrame:SetHiddenHeight( -yOffset )
@@ -1054,13 +1057,13 @@ trinketFrame:Point( "BOTTOMRIGHT", playerFrame, "TOPRIGHT", 0, yOffset )
 	
 	
 if not disabledebuffs then
-	local targetFrame = CreateAuraBarFrame( targetDataSource, G.UnitFrames.Player )
-	targetFrame:SetHiddenHeight( -yOffset )
-	targetFrame:Point( "BOTTOMLEFT", trinketFrame, "TOPLEFT", 0, yOffset )
-	targetFrame:Point( "BOTTOMRIGHT", trinketFrame, "TOPRIGHT", 0, yOffset )
+	local targetFrame = CreateAuraBarFrame(targetDataSource, G.UnitFrames.Player)
+	targetFrame:SetHiddenHeight(-yOffset)
+	targetFrame:Point("BOTTOMLEFT", G.UnitFrames.Target.Debuffs, "TOPLEFT", 0, (yOffset - 2))
+	targetFrame:Point("BOTTOMRIGHT", G.UnitFrames.Target.Debuffs, "TOPRIGHT", 0, (yOffset - 2))
 else
-	local targetFrame = CreateAuraBarFrame( targetDataSource, TukuiTarget )
-	targetFrame:SetHiddenHeight( -yOffset )
-	targetFrame:Point( "BOTTOMLEFT", G.UnitFrames.Target.Debuffs, "TOPLEFT", 0, 5 )
+	local targetFrame = CreateAuraBarFrame(targetDataSource, TukuiTarget)
+	targetFrame:SetHiddenHeight(-yOffset)
+	targetFrame:Point("BOTTOMLEFT", G.UnitFrames.Target.Debuffs, "TOPLEFT", 0, 5)
 	targetFrame:Kill()
 end

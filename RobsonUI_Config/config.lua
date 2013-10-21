@@ -70,10 +70,11 @@ C["classbar"] = {
 
 C["classtimer"] = {
 	["enable"] = true,
-	["disabledebuffs"] = true,	
+	["disabledebuffs"] = false,	
 	["playercolor"] = {0.18, 0.18, 0.18},
 	["targetbuffcolor"] = {70/255, 150/255, 70/255, 1},
-	["targetdebuffcolor"] = {150/255, 30/255, 30/255, 1},		
+	-- ["targetdebuffcolor"] = {150/255, 30/255, 30/255, 1},		
+	["targetdebuffcolor"] = {class.r, class.g, class.b, 1},		
 	["trinketcolor"] = {0.38, 0.38, 0.38},				
 	["spark"] = true,
 	["barheight"] = 18,

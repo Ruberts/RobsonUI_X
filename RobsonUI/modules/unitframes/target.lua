@@ -101,7 +101,7 @@ if C["unitframes"].castbar == true then
 
 		if(C["unitframes"].cbicons == true) then
 			self.Castbar:SetWidth(self:GetWidth())
-			self.Castbar:Point("BOTTOM", self, "TOP", 0, 150)
+			self.Castbar:Point("BOTTOM", self, "TOP", 0, 180)
 			self.Castbar.button:ClearAllPoints()
 			self.Castbar.button:SetPoint("BOTTOM", self.Castbar, "TOP", 0, 5)
 			self.Castbar.button:Size(20)
@@ -139,7 +139,6 @@ self.Buffs:Point("BOTTOMLEFT", self, "TOPLEFT", 0, 3)
 self.Buffs:Size(240, 24)
 self.Buffs.size = 24
 self.Buffs.num = 9
-self.Buffs.numRow = 9
 self.Buffs.spacing = 3	
 self.Buffs.initialAnchor = "TOPLEFT"
 self.Buffs.ClearAllPoints = T.dummy		
@@ -149,11 +148,11 @@ self.Buffs.PostUpdateAura = T.PostUpdateAura
 
 self.Debuffs:ClearAllPoints()
 self.Debuffs:Point("BOTTOMLEFT", self.Buffs, "TOPLEFT", 0, 3)
-self.Debuffs:Size(240, 27)		
+self.Debuffs:Size(240, 24)		
 self.Debuffs.size = 24
 self.Debuffs.num = 18
 self.Debuffs.spacing = 3
-self.Debuffs.initialAnchor = "TOPRIGHT"
+self.Debuffs.initialAnchor = "BOTTOMRIGHT"
 self.Debuffs["growth-y"] = "UP"
 self.Debuffs["growth-x"] = "LEFT"
 self.Debuffs.ClearAllPoints = T.dummy
@@ -163,14 +162,22 @@ self.Debuffs.PostUpdateAura = T.PostUpdateAura
 
 self.Debuffs.onlyShowPlayer = C["unitframes"].onlyselfdebuffs
 
-if(self.Buffs or self.Debuffs) then
-	for _, frames in pairs({self.Buffs, self.Debuffs}) do
+if self.Buffs then
+	for _, frames in pairs({self.Buffs}) do
 		if(not frames) then return end
-		if self.Debuffs then
+		if self.Buffs then
 			frames:Size(240, 24)
 			frames.size = 24
-			frames.num = 18
-		elseif self.Buffs then
+			frames.num = 9
+		end
+		hooksecurefunc(frames, "PostCreateIcon", T.SkinAura)
+	end
+end
+
+if self.Debuffs then
+	for _, frames in pairs({self.Debuffs}) do
+		if(not frames) then return end
+		if self.Debuffs then
 			frames:Size(240, 24)
 			frames.size = 24
 			frames.num = 9

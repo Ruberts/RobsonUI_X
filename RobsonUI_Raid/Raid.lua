@@ -32,8 +32,15 @@ T.PostUpdateRaidUnit = function(self)
 
 	self.panel:Kill()
 	self:SetBackdropColor(0, 0, 0, 0)
-	self:SetFrameLevel(1)
 	self:CreateBorder(false, true)
+	
+	local panel = CreateFrame("Frame", nil, self)
+	panel:SetTemplate("Transparent")
+	panel:Point("TOPRIGHT", self, "TOPRIGHT", 0, 0)
+	panel:Point("BOTTOMLEFT", self, "BOTTOMLEFT", 0, 0)
+	panel:Size(100, 20)
+	panel:SetFrameLevel(1)
+	self.panel = panel
 
 	--------------------------------------------------------------
 	-- Health
@@ -41,7 +48,6 @@ T.PostUpdateRaidUnit = function(self)
 	self.Health:ClearAllPoints()
 	self.Health:SetAllPoints(self)
 	self.Health:SetStatusBarTexture(C["media"].normTex)
-	self.Health:SetFrameLevel(self:GetFrameLevel())
 	
 	self.Health.colorDisconnected = false
 	self.Health.colorClass = false
@@ -184,5 +190,4 @@ TukuiRaidPosition:SetScript("OnEvent", function(self, event)
 	local pets = G.UnitFrames.RaidPets
 		pets:ClearAllPoints()
 	end
-
 end)
