@@ -100,7 +100,6 @@ C["nameplate"] = {
 
 C["scd"] = {
 	["enable"] = true,
-	["fsize"] = 12,
 	["size"] = 26,
 	["spacing"] = 5,
 	["fade"] = 0,

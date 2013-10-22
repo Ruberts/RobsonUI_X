@@ -2,9 +2,6 @@ local T, C, L, G = unpack(Tukui)
 
 if C["scd"].enable ~= true then return end
 
-local font = C["media"].font
-local fontSize = C["scd"].fsize
-local fontStyle = "THINOUTLINE"
 local texture = C["media"].normTex
 local size = T.Scale(C["scd"].size)
 local spacing = T.Scale(C["scd"].spacing)
@@ -14,6 +11,7 @@ local fade = C["scd"].fade
 local direction = C["scd"].direction
 local mode = "HIDE"
 local displayMode = C["scd"].display
+local class = RAID_CLASS_COLORS[select(2,UnitClass("player"))]
 
 if T.myclass == "WARRIOR" or T.myclass == "HUNTER" or T.myclass == "DEATHKNIGHT" or T.myclass == "ROGUE" then
 	mode = "HIDE"
@@ -513,7 +511,6 @@ end
 local function createCooldownFrame(spell)
 	-- Background
 	local frame = CreateFrame("Frame", nil, UIParent)
-	--frame:CreateBackdrop("Transparent")
 	frame:CreateBorder(false, true)
 	frame:SetHeight(height)
 	frame:SetWidth(width)
@@ -537,17 +534,16 @@ local function createCooldownFrame(spell)
 	if displayMode == "STATUSBAR" then
 		-- Text Timer
 		local durationText = frame:CreateFontString(nil, "OVERLAY")
-		durationText:SetFont(font, fontSize, fontStyle)
+		durationText:SetFont(T.CreateFontString())
 		durationText:SetTextColor(unpack(color))
 		durationText:SetText("")
-		durationText:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 0, 0)
+		durationText:SetPoint("CENTER", frame, "CENTER", 0, 0)
 		frame.DurationText = durationText
 
 		-- Status Bar Timer
 		local statusBar = CreateFrame("StatusBar", nil, frame, "TextStatusBar")
 		statusBar:SetStatusBarTexture(C["media"].normTex)
-		statusBar:SetStatusBarColor(.77, .12, .23)
-		--statusBar:CreateBackdrop("Transparent")
+		statusBar:SetStatusBarColor(class.r, class.g, class.b, 1)
 		statusBar:RobSkin()
 		statusBar:SetPoint("TOPLEFT", frame, "BOTTOMLEFT", 0, -3)
 		statusBar:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", 0, -7)
