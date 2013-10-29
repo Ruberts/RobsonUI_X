@@ -6,7 +6,7 @@ TukuiAurasPlayerDebuffs:ClearAllPoints()
 TukuiAurasPlayerBuffs:Point("TOPRIGHT", TukuiMinimap, "TOPLEFT", -3, -2)
 TukuiAurasPlayerBuffs:SetAttribute("wrapAfter", 17)
 TukuiAurasPlayerBuffs:SetAttribute("xOffset", -35)
-TukuiAurasPlayerBuffs:SetAttribute("wrapYOffset", -38)
+TukuiAurasPlayerBuffs:SetAttribute("wrapYOffset", -42)
 
 TukuiAurasPlayerDebuffs:Point("BOTTOMRIGHT", TukuiMinimap, "BOTTOMLEFT", -3, 2)
 TukuiAurasPlayerDebuffs:SetAttribute("wrapAfter", 17)

@@ -537,7 +537,7 @@ local function createCooldownFrame(spell)
 		durationText:SetFont(T.CreateFontString())
 		durationText:SetTextColor(unpack(color))
 		durationText:SetText("")
-		durationText:SetPoint("CENTER", frame, "CENTER", 0, 0)
+		durationText:SetPoint("CENTER", frame, "CENTER", 1, 0)
 		frame.DurationText = durationText
 
 		-- Status Bar Timer

@@ -162,10 +162,14 @@ self.Debuffs.PostUpdateAura = T.PostUpdateAura
 
 self.Debuffs.onlyShowPlayer = C["unitframes"].onlyselfdebuffs
 
-if self.Buffs then
-	for _, frames in pairs({self.Buffs}) do
+if (self.Buffs or self.Debuffs) then
+	for _, frames in pairs({self.Buffs, self.Debuffs}) do
 		if(not frames) then return end
 		if self.Buffs then
+			frames:Size(240, 24)
+			frames.size = 24
+			frames.num = 9
+		elseif self.Debuffs then
 			frames:Size(240, 24)
 			frames.size = 24
 			frames.num = 9
@@ -174,14 +178,3 @@ if self.Buffs then
 	end
 end
 
-if self.Debuffs then
-	for _, frames in pairs({self.Debuffs}) do
-		if(not frames) then return end
-		if self.Debuffs then
-			frames:Size(240, 24)
-			frames.size = 24
-			frames.num = 9
-		end
-		hooksecurefunc(frames, "PostCreateIcon", T.SkinAura)
-	end
-end

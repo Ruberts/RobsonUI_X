@@ -28,6 +28,7 @@ local frames = {
 	StaticPopup1,
 	StaticPopup3,
 	PetJournalParent,
+	FloatingBattlePetTooltip,
 	TukuiPopupDialog1,
 	TukuiPopupDialogButtonAccept1,
 	TukuiPopupDialogButtonCancel1,
@@ -52,7 +53,6 @@ OnLoad:SetScript("OnEvent", function()
 	end
 end)
 
--- Since BNet Converstaion frame is Transparent in my UI give the List a Template so it looks nice.
 BNConversationInviteDialogList:SetTemplate("Default")
 
 WorldMapQuestRewardScrollFrameScrollBar:SkinScrollBar()
@@ -193,7 +193,6 @@ local Init = CreateFrame("Frame")
 Init:RegisterEvent("ADDON_LOADED")
 Init:SetScript("OnEvent", SkinBlizzardFrames)
 
--- Skin the bag frames.
 if C["bags"].enable ~= true then return end
 
 local function BagsSlotUpdate(self, b)
@@ -225,7 +224,6 @@ local function BagsLayout(self, lb)
 	end
 	
 	f:RobSkin()
-	--f:CreateShadow()
 end
 hooksecurefunc(Stuffing, "Layout", BagsLayout)
 

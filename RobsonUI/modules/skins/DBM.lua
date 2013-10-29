@@ -195,9 +195,8 @@ local SkinBoss=function()
 		end
 
 		if not bar.styled then
-			bar:SetHeight(buttonsize / 3)
-			bar:SetTemplate("Transparent")
-			bar:CreateShadow("Default")
+			bar:SetHeight(5)
+			bar:RobSkin()
 			background:SetNormalTexture(nil)
 			bar.styled = true
 		end
@@ -207,12 +206,12 @@ local SkinBoss=function()
 			progress.styled = true
 		end
 		progress:ClearAllPoints()
-		progress:Point("TOPLEFT", bar, "TOPLEFT", 2, -2)
-		progress:Point("BOTTOMRIGHT", bar, "BOTTOMRIGHT", -2, 2)
+		progress:Point("TOPLEFT", bar, "TOPLEFT", 0, 0)
+		progress:Point("BOTTOMRIGHT", bar, "BOTTOMRIGHT", 0, 0)
 
 		if not name.styled then
 			name:ClearAllPoints()
-			name:Point("BOTTOMLEFT", bar, "TOPLEFT", 1, 2)
+			name:Point("BOTTOMLEFT", bar, "TOPLEFT", 1, 0)
 			name:SetFont(T.CreateFontString())
 			name:SetJustifyH("LEFT")
 			name:SetShadowColor(0, 0, 0, 0)
@@ -221,7 +220,7 @@ local SkinBoss=function()
 
 		if not timer.styled then
 			timer:ClearAllPoints()
-			timer:Point("BOTTOMRIGHT", bar, "TOPRIGHT", 0, 2)
+			timer:Point("BOTTOMRIGHT", bar, "TOPRIGHT", 0, 0)
 			timer:SetFont(T.CreateFontString())
 			timer:SetJustifyH("RIGHT")
 			timer:SetShadowColor(0, 0, 0, 0)
