@@ -24,7 +24,7 @@ end
 
 T.SkinAura = function (self, button)
 	button.count:SetFont(T.CreateFontString())
-	button.count:Point("BOTTOMRIGHT", 2, 2)
+	button.count:Point("BOTTOMRIGHT", button, 2, -2)
 	button.remaining:SetFont(T.CreateFontString())
 	button.Glow:Kill()
 	button:CreateBorder(false, true)

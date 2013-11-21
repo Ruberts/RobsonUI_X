@@ -50,12 +50,16 @@ local TRINKET_FILTER = {
 		CreateSpellEntry( 104993 ), -- Jade Spirit
 		CreateSpellEntry( 126659 ), -- Quickened Tongues
 		CreateSpellEntry( 138703 ), -- Acceleration
-		CreateSpellEntry( 138898 ), -- Breath of many Mind
+		CreateSpellEntry( 138898 ), -- Breath of Many Mind
 		CreateSpellEntry( 138317 ), -- Time Lord
 		CreateSpellEntry( 139133 ), -- Mastermind
 		CreateSpellEntry( 138788 ), -- Electrified
 		CreateSpellEntry( 137590 ), -- Tempus Repit
 		CreateSpellEntry( 146046 ), -- Expanded Mind
+		CreateSpellEntry( 145254 ), -- Potent Flames
+		CreateSpellEntry( 145261 ), -- Fiery Adept
+		CreateSpellEntry( 146184 ), -- Wrath of the Darkspear
+		CreateSpellEntry( 146202 ), -- Wrath
 };
 	
 local CLASS_FILTERS = {
@@ -353,6 +357,7 @@ local CLASS_FILTERS = {
 				CreateSpellEntry( 16166 ), -- Elemental Mastery
 				CreateSpellEntry( 77661 ), -- Searing Flame
 				CreateSpellEntry( 115798 ), -- Weakened Blows
+				CreateSpellEntry( 144999 ), -- Elemental Discharge
 			},
 				player = {
 				--CreateSpellEntry( 324 ), -- Lightning Shield
