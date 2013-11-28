@@ -547,7 +547,7 @@ local function ShowHealth(frame, ...)
 		elseif(d < 20) then
 			SetVirtualBorder(frame.hp, 1, 0, 0)
 		else
-			SetVirtualBorder(frame.hp, unpack(C["media"].bordercolor))
+			SetVirtualBorder(frame.hp, 0, 0, 0)
 		end
 	elseif (frame.hasClass ~= true and frame.isFriendly ~= true) and C["nameplate"].enhancethreat == true then
 		SetVirtualBorder(frame.hp, unpack(C["media"].bordercolor))
