@@ -2,14 +2,8 @@
 
 if not C["nameplate"].robson == true and C["nameplate"].enable ~= true then return end
 
-----------------------------------------------------------------------------------------
---	Based on dNameplates(by Dawn, editor Elv22)
-----------------------------------------------------------------------------------------
 local frames, numChildren, select = {}, -1, select
 local noscalemult = T.mult * C["general"].uiscale
-local goodR, goodG, goodB = unpack(C["nameplate"].goodcolor)
-local badR, badG, badB = unpack(C["nameplate"].badcolor)
-local transitionR, transitionG, transitionB = unpack(C["nameplate"].transitioncolor)
 
 local NamePlates = CreateFrame("Frame", nil, UIParent)
 NamePlates:SetScript("OnEvent", function(self, event, ...) self[event](self, ...) end)
@@ -64,42 +58,10 @@ local function CreateVirtualFrame(frame, point)
 	frame.backdrop:SetPoint("TOPLEFT", point, "TOPLEFT", -noscalemult, noscalemult)
 	frame.backdrop:SetPoint("BOTTOMRIGHT", point, "BOTTOMRIGHT", noscalemult, -noscalemult)
 	frame.backdrop:SetTexture(unpack(C["media"].backdropcolor))
-
-	frame.bordertop = frame:CreateTexture(nil, "BORDER")
-	frame.bordertop:SetPoint("TOPLEFT", point, "TOPLEFT", -noscalemult, noscalemult)
-	frame.bordertop:SetPoint("TOPRIGHT", point, "TOPRIGHT", noscalemult, noscalemult)
-	frame.bordertop:SetHeight(noscalemult)
-	frame.bordertop:SetTexture(unpack(C["media"].backdropcolor))
-	frame.bordertop:SetDrawLayer("BORDER", -7)
-
-	frame.borderbottom = frame:CreateTexture(nil, "BORDER")
-	frame.borderbottom:SetPoint("BOTTOMLEFT", point, "BOTTOMLEFT", -noscalemult, -noscalemult)
-	frame.borderbottom:SetPoint("BOTTOMRIGHT", point, "BOTTOMRIGHT", noscalemult, -noscalemult)
-	frame.borderbottom:SetHeight(noscalemult)
-	frame.borderbottom:SetTexture(unpack(C["media"].backdropcolor))
-	frame.borderbottom:SetDrawLayer("BORDER", -7)
-
-	frame.borderleft = frame:CreateTexture(nil, "BORDER")
-	frame.borderleft:SetPoint("TOPLEFT", point, "TOPLEFT", -noscalemult , noscalemult)
-	frame.borderleft:SetPoint("BOTTOMLEFT", point, "BOTTOMLEFT", noscalemult, -noscalemult)
-	frame.borderleft:SetWidth(noscalemult)
-	frame.borderleft:SetTexture(unpack(C["media"].backdropcolor))
-	frame.borderleft:SetDrawLayer("BORDER", -7)
-
-	frame.borderright = frame:CreateTexture(nil, "BORDER")
-	frame.borderright:SetPoint("TOPRIGHT", point, "TOPRIGHT", noscalemult, noscalemult)
-	frame.borderright:SetPoint("BOTTOMRIGHT", point, "BOTTOMRIGHT", -noscalemult, -noscalemult)
-	frame.borderright:SetWidth(noscalemult)
-	frame.borderright:SetTexture(unpack(C["media"].backdropcolor))
-	frame.borderright:SetDrawLayer("BORDER", -7)
 end
 
-local function SetVirtualBorder(frame, r, g, b)
+local function SetVirtualBorder(frame, r, g, b, a)
 	frame.backdrop:SetTexture(r, g, b)
-	-- frame.bordertop:SetTexture(r, g, b)
-	-- frame.borderbottom:SetTexture(r, g, b)
-	-- frame.borderleft:SetTexture(r, g, b)
-	-- frame.borderright:SetTexture(r, g, b)
 end
 
 -- Create aura icons
@@ -244,6 +206,7 @@ local function OnHide(frame)
 	frame.hp.rcolor = nil
 	frame.hp.gcolor = nil
 	frame.hp.bcolor = nil
+	frame.hp.shadow:SetAlpha(0)
 	if frame.icons then
 		for _, icon in ipairs(frame.icons) do
 			icon:Hide()
@@ -259,10 +222,7 @@ local function Colorize(frame)
 	local texcoord = {0, 0, 0, 0}
 	
 	for class, _ in pairs(RAID_CLASS_COLORS) do
-		local r, g, b = floor(r * 100 + 0.5) / 100, floor(g * 100 + 0.5) / 100, floor(b * 100 + 0.5) / 100
-		if class == "MONK" then
-			b = b - 0.01
-		end
+		local r, g, b = floor(r * 100 + 0.5)/100, floor(g * 100 + 0.5)/100, floor(b * 100 + 0.5)/100
 		if RAID_CLASS_COLORS[class].r == r and RAID_CLASS_COLORS[class].g == g and RAID_CLASS_COLORS[class].b == b then
 			frame.hasClass = true
 			frame.isFriendly = false
@@ -276,24 +236,19 @@ local function Colorize(frame)
 		end
 	end
 	
-	frame.isTagged = true
-	frame.hasClass = false
-
 	if r + b + b > 2 then	-- Tapped
-		r, g, b = 0.6, 0.6, 0.6
-		frame.isFriendly = false
-		frame.isTagged = true
+		r, g, b = 0.55, 0.57, 0.61
 	elseif g + b == 0 then	-- Hostile
-		r, g, b = unpack(oUFTukui.colors.reaction[1])
+		r, g, b = 222/255, 95/255,  95/255
 		frame.isFriendly = false
 	elseif r + b == 0 then	-- Friendly npc
-		r, g, b = unpack(oUFTukui.colors.power["MANA"])
+		r, g, b = 0.29, 0.69, 0.29
 		frame.isFriendly = true
 	elseif r + g > 1.95 then	-- Neutral
-		r, g, b = unpack(oUFTukui.colors.reaction[4])
+		r, g, b = 218/255, 197/255, 92/255
 		frame.isFriendly = false
 	elseif r + g == 0 then	-- Friendly player
-		r, g, b = unpack(oUFTukui.colors.reaction[5])
+		r, g, b = 75/255,  175/255, 76/255
 		frame.isFriendly = true
 	else	-- Enemy player
 		frame.isFriendly = false
@@ -317,6 +272,8 @@ end
 local function UpdateObjects(frame)
 	frame = frame:GetParent()
 	
+	SetVirtualBorder(frame.hp, 0, 0, 0)
+	
 	-- Set scale
 	while frame.hp:GetEffectiveScale() < 1 do
 		frame.hp:SetScale(frame.hp:GetScale() + 0.01)
@@ -333,15 +290,9 @@ local function UpdateObjects(frame)
 	frame.hp:SetValue(frame.healthOriginal:GetValue() - 1) -- Blizzard bug fix
 	frame.hp:SetValue(frame.healthOriginal:GetValue())
 
-	-- Colorize Plate
-	Colorize(frame)
-	frame.hp.rcolor, frame.hp.gcolor, frame.hp.bcolor = frame.hp:GetStatusBarColor()
-	-- frame.hp.hpbg:SetTexture(frame.hp.rcolor, frame.hp.gcolor, frame.hp.bcolor, 0.25)
-	SetVirtualBorder(frame.hp, unpack(C["media"].bordercolor))
-	frame.hp.name:SetTextColor(1, 1, 1)
-
 	-- Set the name text
 	frame.hp.name:SetText(frame.hp.oldname:GetText())
+	frame.hp.name:SetTextColor(1, 1, 1)
 
 	-- Setup level text
 	local level, elite, mylevel = tonumber(frame.hp.oldlevel:GetText()), frame.hp.elite:IsShown(), UnitLevel("player")
@@ -382,6 +333,15 @@ local function SkinObjects(frame, nameFrame)
 	hp:SetFrameLevel(oldhp:GetFrameLevel())
 	hp:SetFrameStrata(oldhp:GetFrameStrata())
 	hp:SetStatusBarTexture(C["media"].normTex)
+	hp:CreateShadow()
+	hp.shadow:Point("TOPLEFT", hp, -4, 4)
+	hp.shadow:Point("BOTTOMLEFT", hp, -4, -4)
+	hp.shadow:Point("TOPRIGHT", hp, 4, 4)
+	hp.shadow:Point("BOTTOMRIGHT", hp, 4, 4)
+	hp.shadow:SetBackdropBorderColor(1, 1, 1, 0.60)
+	hp.shadow:SetFrameLevel(0)
+	hp.shadow:SetScale(noscalemult)
+	hp.shadow:SetAlpha(0)
 	CreateVirtualFrame(hp)
 
 	-- Create Level
@@ -404,7 +364,6 @@ local function SkinObjects(frame, nameFrame)
 	-- Create Name Text
 	hp.name = hp:CreateFontString(nil, "OVERLAY")
 	hp.name:SetPoint("LEFT", hp, "LEFT", 0, 11)
-	--hp.name:SetPoint("BOTTOMRIGHT", hp, "TOPRIGHT", 3, 0)
 	hp.name:SetFont(C["media"].pixelfont, 9, "MONOCHROMEOUTLINE")
 	hp.oldname = oldname
 
@@ -430,7 +389,7 @@ local function SkinObjects(frame, nameFrame)
 	-- Create Cast Time Text
 	cb.time = cb:CreateFontString(nil, "ARTWORK")
 	cb.time:SetPoint("RIGHT", cb, "RIGHT", 3, 0)
-	cb.time:SetFont(C["media"].font, 8, "THINOUTLINE")
+	cb.time:SetFont(C["media"].pixelfont, 9, "MONOCHROMEOUTLINE")
 	cb.time:SetTextColor(1, 1, 1)
 
 	-- Create Cast Name Text
@@ -503,8 +462,8 @@ local function SkinObjects(frame, nameFrame)
 	if not frame.raidicon then
 		raidicon:SetParent(frame.hp)
 		raidicon:ClearAllPoints()
-		raidicon:SetPoint("BOTTOM", hp, "TOP", 0, C.nameplate.debuffs == true and 38 or 16)
-		raidicon:SetSize((C.nameplate.height * 2) + 8, (C.nameplate.height * 2) + 8)
+		raidicon:SetPoint("BOTTOM", hp, "TOP", 0, C["nameplate"].debuffs == true and 38 or 16)
+		raidicon:SetSize((C["nameplate"].height * 2) + 8, (C["nameplate"].height * 2) + 8)
 		frame.raidicon = raidicon
 	end
 
@@ -527,57 +486,14 @@ local function SkinObjects(frame, nameFrame)
 end
 
 local function UpdateThreat(frame, elapsed)
-	frame.hp:Show()
-	
-	Colorize(frame)
-	
-	if frame.hasClass or frame.isTagged then return end
-
-	if C["nameplate"].enhancethreat ~= true then
-		if frame.threat:IsShown() then
-			local _, val = frame.threat:GetVertexColor()
-			if val > 0.7 then
-				SetVirtualBorder(frame.hp, transitionR, transitionG, transitionB)
-			else
-				SetVirtualBorder(frame.hp, badR, badG, badB)
-			end
+	if frame.threat:IsShown() then
+		if Role == "TANK" then
+			frame.hp.name:SetTextColor(0, 1, 0)
 		else
-			SetVirtualBorder(frame.hp, unpack(C.media.bordercolor))
+			frame.hp.name:SetTextColor(1, 0, 0)
 		end
 	else
-		if not frame.threat:IsShown() then
-			if InCombatLockdown() and frame.isFriendly ~= true then
-				-- No Threat
-				if T.Role == "Tank" then
-					frame.hp:SetStatusBarColor(badR, badG, badB)
-					frame.hp.hpbg:SetTexture(badR, badG, badB, 0.25)
-				else
-					frame.hp:SetStatusBarColor(goodR, goodG, goodB)
-					frame.hp.hpbg:SetTexture(goodR, goodG, goodB, 0.25)
-				end
-			else
-				-- Set colors to their original, not in combat
-				frame.hp:SetStatusBarColor(frame.hp.rcolor, frame.hp.gcolor, frame.hp.bcolor)
-				frame.hp.hpbg:SetTexture(frame.hp.rcolor, frame.hp.gcolor, frame.hp.bcolor, 0.25)
-			end
-		else
-			-- Ok we either have threat or we're losing/gaining it
-			local r, g, b = frame.threat:GetVertexColor()
-			if g + b == 0 then
-				-- Have Threat
-				if T.Role == "Tank" then
-					frame.hp:SetStatusBarColor(goodR, goodG, goodB)
-					frame.hp.hpbg:SetTexture(goodR, goodG, goodB, 0.25)
-				else
-					frame.hp:SetStatusBarColor(badR, badG, badB)
-					frame.hp.hpbg:SetTexture(badR, badG, badB, 0.25)
-				end
-			else
-				-- Losing/Gaining Threat
-				frame.hp:SetStatusBarColor(transitionR, transitionG, transitionB)
-				frame.hp.hpbg:SetTexture(transitionR, transitionG, transitionB, 0.25)
-			end
-		end
+		frame.hp.name:SetTextColor(1, 1, 1)
 	end
 end
 
@@ -644,12 +560,15 @@ local function CheckUnit_Guid(frame, ...)
 		frame.guid = UnitGUID("target")
 		frame.unit = "target"
 		OnAura(frame, "target")
+		frame.hp.shadow:SetAlpha(1)
 	elseif frame.overlay:IsShown() and UnitExists("mouseover") and UnitName("mouseover") == frame.hp.name:GetText() then
 		frame.guid = UnitGUID("mouseover")
 		frame.unit = "mouseover"
 		OnAura(frame, "mouseover")
+		frame.hp.shadow:SetAlpha(0)
 	else
 		frame.unit = nil
+		frame.hp.shadow:SetAlpha(0)
 	end
 end
 
@@ -707,7 +626,7 @@ NamePlates:SetScript("OnUpdate", function(self, elapsed)
 	ForEachPlate(ShowHealth)
 	ForEachPlate(CheckBlacklist)
 	ForEachPlate(CheckUnit_Guid)
-	--ForEachPlate(Colorize)
+	ForEachPlate(Colorize)
 end)
 
 function NamePlates:COMBAT_LOG_EVENT_UNFILTERED(_, event, ...)
