@@ -124,7 +124,7 @@ local function CreateAuraIcon(frame)
 	button.cd:SetReverse(true)
 
 	button.count = button:CreateFontString(nil, "OVERLAY")
-	button.count:SetFont(C["media"].font, 7, "THINOUTLINE")
+	button.count:SetFont(C["media"].pixelfont, 9, "MONOCHROMEOUTLINE")
 	button.count:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", 0, 0)
 
 	return button
@@ -149,8 +149,9 @@ local function UpdateAuraIcon(button, unit, index, filter)
 			self:SetScript("OnUpdate", nil)
 			return
 		end
-		button.cd.timer.text:SetFont(C["media"].font, 8, "THINOUTLINE")
-		button.cd.timer.text:SetPoint("TOPLEFT", button, "TOPLEFT", 0, 0)
+		button.cd.timer.text:SetFont(C["media"].pixelfont, 9, "MONOCHROMEOUTLINE")
+		button.cd.timer.text:SetPoint("TOPLEFT", button, "TOPLEFT", 3, 0)
+		button.cd.timer.text:SetShadowOffset(0, 0)
 	end)
 	button:Show()
 end
@@ -348,7 +349,7 @@ local function UpdateObjects(frame)
 	if C["nameplate"].classicons == true and frame.hasClass == true then
 		frame.hp.level:SetPoint("RIGHT", frame.hp.name, "LEFT", -2, 0)
 	else
-		frame.hp.level:SetPoint("RIGHT", frame.hp, "RIGHT", 0, 9)
+		frame.hp.level:SetPoint("RIGHT", frame.hp, "RIGHT", 0, 11)
 	end
 	frame.hp.level:SetTextColor(frame.hp.oldlevel:GetTextColor())
 	if frame.hp.boss:IsShown() then
@@ -385,7 +386,7 @@ local function SkinObjects(frame, nameFrame)
 
 	-- Create Level
 	hp.level = hp:CreateFontString(nil, "OVERLAY")
-	hp.level:SetFont(C["media"].font, 9, "THINOUTLINE")
+	hp.level:SetFont(C["media"].pixelfont, 9, "MONOCHROMEOUTLINE")
 	hp.level:SetTextColor(1, 1, 1)
 	hp.oldlevel = oldlevel
 	hp.boss = bossicon
@@ -402,9 +403,9 @@ local function SkinObjects(frame, nameFrame)
 
 	-- Create Name Text
 	hp.name = hp:CreateFontString(nil, "OVERLAY")
-	hp.name:SetPoint("LEFT", hp, "LEFT", 0, 9)
+	hp.name:SetPoint("LEFT", hp, "LEFT", 0, 11)
 	--hp.name:SetPoint("BOTTOMRIGHT", hp, "TOPRIGHT", 3, 0)
-	hp.name:SetFont(C["media"].font, 9, "THINOUTLINE")
+	hp.name:SetFont(C["media"].pixelfont, 9, "MONOCHROMEOUTLINE")
 	hp.oldname = oldname
 
 	hp.hpbg = hp:CreateTexture(nil, "BORDER")
