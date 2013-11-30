@@ -104,6 +104,9 @@ spellCooldowns = {
 		112071, -- Celestial Alignment
 		110621, -- Mirror Images
 		29166, -- Innervate
+		22812, -- Barkskin
+		102558, -- Incarnation: Son of Ursoc
+		106922, -- Might of Ursoc
 	},
 	["MAGE"] = {
 		12472, -- Icy Veins
