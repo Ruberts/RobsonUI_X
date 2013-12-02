@@ -157,3 +157,58 @@ function T.StylePet()
 		T.StyleActionBarPetButton(normal, button, icon, name, true)
 	end
 end
+
+local ShowOverlayGlow = function(self)
+    if (self.overlay) then
+        if (self.overlay.animOut:IsPlaying()) then
+            self.overlay.animOut:Stop()
+            self.overlay.animIn:Play()
+        end
+    else
+        self.overlay = ActionButton_GetOverlayGlow()
+        local frameWidth, frameHeight = self:GetSize()
+        self.overlay:SetParent(self)
+        self.overlay:ClearAllPoints()
+        self.overlay:SetSize(frameWidth * 1.4, frameHeight * 1.4)
+        self.overlay:SetPoint("TOPLEFT", self, "TOPLEFT", -frameWidth * 0.2, frameHeight * 0.2)
+        self.overlay:SetPoint("BOTTOMRIGHT", self, "BOTTOMRIGHT", frameWidth * 0.2, -frameHeight * 0.2)
+        self.overlay.animIn:Play()
+    end
+end
+
+local HideOverlayGlow = function(self)
+	if (self.overlay) then
+		if(self.overlay.animIn:IsPlaying()) then
+			self.overlay.animIn:stop()
+		end
+		if (self:isVisible()) then
+			self.overlay.animOut:Play()
+		else
+			ActionButton_OverlayGlowAnimOutFinished(self.overlay.animOut)
+		end
+	end
+end
+
+local ShowOverlayGlowNew = function(self)
+	if (self.overlay) then
+		if self.NewProc then
+			self.NewProc:Hide()
+		end
+		
+		self.overlay:Show()
+		ShowOverlayGlow(self)
+	else
+		HideOverlayGlow(self)
+	end
+end
+
+local HideOverlayGlowNew = function(self)
+	if (self.Animation) then
+		self.Animation:Stop()
+		self.NewProc:Hide()
+	end
+end
+
+hooksecurefunc("ActionButton_ShowOverlayGlow", ShowOverlayGlowNew)
+hooksecurefunc("ActionButton_HideOverlayGlow", HideOverlayGlowNew)
+	
