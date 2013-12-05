@@ -52,26 +52,22 @@ T.PostUpdateRaidUnit = function(self)
 	self.Health.colorClass = false
 	self.Health:SetStatusBarColor(unpack(C["media"].unitframecolor))
 	self.Health.bg:SetTexture(unpack(C["media"].backdropcolor))
-	if C["unitframes"].unicolor == true then
-		self.Health.bg:SetVertexColor(0.5, 0.5, 0.5)
-	else
-		self.Health.bg:SetVertexColor(0.05, 0.05, 0.05)
-	end
-	self.Health.value:Point("CENTER", self.Health, 0, 0)
-	self.Health.value:SetFont(T.CreateFontString())
-	self.Health.value:SetShadowOffset(0, 0)
 	
-
-	if(C["unitframes"].unicolor == true) then
+	if C["unitframes"].unicolor == true then
 		self.Health.colorDisconnected = false
 		self.Health.colorClass = false
 		self.Health:SetStatusBarColor(0.2, 0.2, 0.2, 1)
-		self.Health.bg:SetVertexColor(0.05, 0.05, 0.05, 1)
+		self.Health.bg:SetVertexColor(0.5, 0.5, 0.5)
 	else
+		self.Health.bg:SetVertexColor(0.05, 0.05, 0.05)
 		self.Health.colorDisconnected = true
 		self.Health.colorClass = true
 		self.Health.colorReaction = true
 	end
+	
+	self.Health.value:Point("CENTER", self.Health, 0, 0)
+	self.Health.value:SetFont(T.CreateFontString())
+	self.Health.value:SetShadowOffset(0, 0)
 	
 	if(C["unitframes"].unicolor == true) then
 		self:HookScript("OnEnter", function(self)
@@ -117,9 +113,9 @@ T.PostUpdateRaidUnit = function(self)
 	--------------------------------------------------------------
 	-- Auras
 	--------------------------------------------------------------
-	if(C["unitframes"]["raidunitdebuffwatch"] == true) then
-		self.RaidDebuffs:Height(16 * C["unitframes"]["gridscale"])
-		self.RaidDebuffs:Width(16 * C["unitframes"]["gridscale"])
+	if C["unitframes"].raidunitdebuffwatch == true then
+		self.RaidDebuffs:Height(16 * C["unitframes"].gridscale)
+		self.RaidDebuffs:Width(16 * C["unitframes"].gridscale)
 		self.RaidDebuffs:Point("LEFT", self.Health, 2, 0)
 		
 		self.RaidDebuffs.icon:Point("TOPLEFT", 0, 0)
@@ -136,7 +132,7 @@ T.PostUpdateRaidUnit = function(self)
 		self.RaidDebuffs.time:SetShadowOffset(0, 0)
 	end
 	
-	if (C["unitframes"].debuffhighlight == true) then
+	if C["unitframes"].debuffhighlight == true then
 		local dbh = self.Health:CreateTexture(nil, "OVERLAY")
 		dbh:SetAllPoints(self.Health)
 		dbh:SetTexture(C["media"].normTex)

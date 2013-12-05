@@ -104,6 +104,3 @@ TukuiPetBar:RobSkin()
 TukuiMinimapStatsLeft:ClearAllPoints()
 TukuiMinimapStatsLeft:Point("BOTTOM", TukuiMinimap, "BOTTOM", 0, 0)
 TukuiMinimapStatsLeft:StripTextures()
-
-
-
