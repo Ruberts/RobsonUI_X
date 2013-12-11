@@ -93,6 +93,14 @@ local function RobSkin(f)
 	f:SetBackdropBorderColor(0, 0, 0, 0)
 end
 
+local function SolidSkin(f)
+	f:SetTemplate()
+	CreateBorder(f, false, true)
+	f:HideInsets()
+	f:SetBackdropBorderColor(0, 0, 0, 0)
+	f:CreateOverlay()
+end
+
 local function FadeIn(frame)
 	UIFrameFadeIn(frame, 0.4, frame:GetAlpha(), 1)
 end
@@ -109,13 +117,14 @@ local function addapi(object)
 	if not object.CreateBorder then mt.CreateBorder = CreateBorder end
 	if not object.SetBorder then mt.SetBorder = SetBorder end
 	if not object.RobSkin then mt.RobSkin = RobSkin end
+	if not object.SolidSkin then mt.SolidSkin = SolidSkin end
 end
 
 local handled = {["Frame"] = true}
 local object = CreateFrame("Frame")
-addapi(object)
-addapi(object:CreateTexture())
-addapi(object:CreateFontString())
+	addapi(object)
+	addapi(object:CreateTexture())
+	addapi(object:CreateFontString())
 
 object = EnumerateFrames()
 while object do

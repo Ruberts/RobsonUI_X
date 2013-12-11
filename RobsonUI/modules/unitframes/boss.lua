@@ -48,7 +48,7 @@ self.Health.PostUpdate = T.PostUpdateHealth
 ---------------------------------------------------------------	
 self.Power:ClearAllPoints()
 self.Power:Size(self:GetWidth(), 3)
-self.Power:Point("TOP", self.Health, "BOTTOM", 0, -3)
+self.Power:Point("TOP", self.Health, "BOTTOM", 0, -1)
 self.Power:SetFrameLevel(self.Health:GetFrameLevel())
 self.Power:CreateBorder(false, true)
 self.Power.frequentUpdates = true

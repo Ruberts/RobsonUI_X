@@ -12,11 +12,11 @@ for i= 1, 12 do
 	b:SetFrameLevel(15)
 	
 	if i == 1 then
-		b:SetPoint("BOTTOMLEFT", bar, T.buttonspacing, T.buttonspacing)
+		b:SetPoint("BOTTOMLEFT", bar, (T.buttonspacing - 1), (T.buttonspacing - 1))
 	elseif i == 7 then
-		b:SetPoint("TOPLEFT", bar, T.buttonspacing, -T.buttonspacing)
+		b:SetPoint("TOPLEFT", bar, (T.buttonspacing - 1), (-T.buttonspacing + 1))
 	else
-		b:SetPoint("LEFT", b2, "RIGHT", T.buttonspacing, 0)
+		b:SetPoint("LEFT", b2, "RIGHT", (T.buttonspacing - 1), 0)
 	end
 	
 	G.ActionBars.Bar3["Button"..i] = b

@@ -41,7 +41,7 @@ self.Health.PostUpdate = T.PostUpdateHealth
 ----------------------------------------------------------------
 self.Power:ClearAllPoints()	
 self.Power:Size(self:GetWidth(), 3)
-self.Power:Point("TOP", self.Health, "BOTTOM", 0, -3)
+self.Power:Point("TOP", self.Health, "BOTTOM", 0, -1)
 self.Power:SetFrameLevel(self.Health:GetFrameLevel())
 self.Power:CreateBorder(false, true)
 
@@ -96,7 +96,7 @@ if C["unitframes"].castbar == true then
 
 	if( C["unitframes"].cbicons == true ) then
 		self.Castbar:SetWidth(TukuiBar1:GetWidth() - 23)
-		self.Castbar:Point("BOTTOM", TukuiBar1, "TOP", 11, 4)
+		self.Castbar:Point("BOTTOM", TukuiBar1, "TOP", 12, 3)
 		self.Castbar.button:ClearAllPoints()
 		self.Castbar.button:Point("RIGHT", self.Castbar, "LEFT", -3, 0)
 		self.Castbar.button:Size(20)

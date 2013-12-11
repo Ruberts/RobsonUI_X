@@ -3,7 +3,7 @@ local T, C, L, G = unpack(Tukui)
 if(C["unitframes"].enable ~= true) then return end
 
 --------------------------------------------------------------
--- local Variables
+-- local variables
 --------------------------------------------------------------
 local self = TukuiTarget
 
@@ -45,7 +45,7 @@ self.Health.PostUpdate = T.PostUpdateHealth
 ---------------------------------------------------------------	
 self.Power:ClearAllPoints()
 self.Power:Size(self:GetWidth(), 3)
-self.Power:Point("TOP", self.Health, "BOTTOM", 0, -3)
+self.Power:Point("TOP", self.Health, "BOTTOM", 0, -1)
 self.Power:SetFrameLevel(self.Health:GetFrameLevel())
 self.Power:CreateBorder(false, true)
 

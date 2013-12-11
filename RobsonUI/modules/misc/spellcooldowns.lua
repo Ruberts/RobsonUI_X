@@ -107,6 +107,7 @@ spellCooldowns = {
 		22812, -- Barkskin
 		102558, -- Incarnation: Son of Ursoc
 		106922, -- Might of Ursoc
+		80964, -- Skull Bash
 	},
 	["MAGE"] = {
 		12472, -- Icy Veins

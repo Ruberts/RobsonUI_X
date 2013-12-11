@@ -51,7 +51,7 @@ C["unitframes"] = {
 	["showraidpets"] = false,
 	["healcomm"] = false,
 	["powerfade"] = true,
-	["gridhealthvertical"] = true,
+	["gridhealthvertical"] = false,
 	["showsymbols"] = true,
 }
 

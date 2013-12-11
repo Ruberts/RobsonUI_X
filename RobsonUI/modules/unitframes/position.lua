@@ -12,8 +12,8 @@ FramePositions:SetScript("OnEvent", function(self, event, addon)
 	TukuiFocus:ClearAllPoints()
 	TukuiFocusTarget:ClearAllPoints()
 	if IsAddOnLoaded("RobsonUI_Raid") then
-		TukuiPlayer:SetPoint("TOP", UIParent, "BOTTOM", -224 , 190)
-		TukuiTarget:SetPoint("TOP", UIParent, "BOTTOM", 224 , 190)
+		TukuiPlayer:SetPoint("TOP", UIParent, "BOTTOM", -210 , 190)
+		TukuiTarget:SetPoint("TOP", UIParent, "BOTTOM", 210 , 190)
 	elseif IsAddOnLoaded("RobsonUI_Raid_Healing") then
 		TukuiPlayer:SetPoint("TOP", UIParent, "BOTTOM", -300 , 199)
 		TukuiTarget:SetPoint("TOP", UIParent, "BOTTOM", 300 , 199)

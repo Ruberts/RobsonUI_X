@@ -69,37 +69,51 @@ bar3:Size(120, 20)
 bar3:Point("LEFT", RobsonBar2, "RIGHT", 4, 0)
 -- bar3:CreateOverlay(self)
 
+-- local robsonab1 = CreateFrame("Frame", "RobsonActionBar1", UIParent)
+-- robsonab1:SolidSkin()
+-- robsonab1:Size((T.buttonsize * 12) + 2, 30)
+-- robsonab1:Point("CENTER", UIParent, "CENTER", 0, 0)
+
 --------------------------------------------------------------
 -- Tukui Panels
 --------------------------------------------------------------
 TukuiBar1:ClearAllPoints()
 TukuiBar1:Point("BOTTOM", UIParent, "BOTTOM", 0, 25)
-TukuiBar1:RobSkin()
+TukuiBar1:SetWidth(T.buttonsize * 12)
+TukuiBar1:SolidSkin()
 if TukuiBar4:IsShown() then
-TukuiBar1:Height((T.buttonsize * 2) + (T.buttonspacing * 3))
+TukuiBar1:Height(T.buttonsize * 2)
 end
 
 TukuiBar4:HookScript("OnHide", function()
-TukuiBar1:Height((T.buttonsize * 1) + (T.buttonspacing * 2))
+TukuiBar1:SetHeight(T.buttonsize * 1)
 end)
 
 TukuiBar4:HookScript("OnShow", function()
-TukuiBar1:Height((T.buttonsize * 2) + (T.buttonspacing * 3))
+TukuiBar1:SetHeight(T.buttonsize * 2)
 end)
 
-TukuiBar2:RobSkin()
+TukuiBar2:SolidSkin()
+TukuiBar2:SetWidth(T.buttonsize * 6)
+TukuiBar2:SetHeight(T.buttonsize * 2)
 
-TukuiBar3:RobSkin()
+TukuiBar3:SolidSkin()
+TukuiBar3:SetWidth(T.buttonsize * 6)
+TukuiBar3:SetHeight(T.buttonsize * 2)
 
 TukuiBar4:ClearAllPoints()
 TukuiBar4:Point("BOTTOM", TukuiBar1, "BOTTOM", 0, 0)
+TukuiBar4:SetHeight(T.buttonsize * 2)
+TukuiBar4:SetWidth(T.buttonsize * 12)
 TukuiBar4:StripTextures()
 
 TukuiBar5:ClearAllPoints()
 TukuiBar5:SetPoint("RIGHT", UIParent, "RIGHT", -10, 0)
-TukuiBar5:RobSkin()
+TukuiBar5:SetWidth(T.buttonsize * 1)
+TukuiBar5:SetHeight(T.buttonsize * 12)
+TukuiBar5:SolidSkin()
 
-TukuiPetBar:RobSkin()
+TukuiPetBar:SolidSkin()
 
 TukuiMinimapStatsLeft:ClearAllPoints()
 TukuiMinimapStatsLeft:Point("BOTTOM", TukuiMinimap, "BOTTOM", 0, 0)

@@ -15,10 +15,10 @@ bar:HookScript("OnEvent", function(self, event, unit)
 			button:SetFrameLevel(15)
 
 			if(i == 1) then
-					button:Point("BOTTOMLEFT", T.buttonspacing, T.buttonspacing)
+					button:Point("BOTTOMLEFT", (T.buttonspacing - 1), (T.buttonspacing - 1))
 			else
 				local previous = _G["ActionButton" .. i - 1]
-				button:SetPoint("LEFT", previous, "RIGHT", T.buttonspacing, 0)
+				button:SetPoint("LEFT", previous, "RIGHT", (T.buttonspacing - 1), 0)
 			end
 		end
 	end
