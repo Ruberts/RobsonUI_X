@@ -20,12 +20,12 @@ local ebWidth = 240
 					for i = 1, 4  do
 						if i == 1 then
 							G.UnitFrames.Player.WarlockSpecBars[i]:Point("BOTTOMLEFT", G.UnitFrames.Player, "TOPLEFT", 0, 3)
-							G.UnitFrames.Player.WarlockSpecBars[i]:Size(tbWidth*4, tbHeight)
+							G.UnitFrames.Player.WarlockSpecBars[i]:Size(tbWidth*4, 3)
 							G.UnitFrames.Player.WarlockSpecBars[i]:RobSkin()
 							G.UnitFrames.Player.WarlockSpecBars[i]:SetFrameLevel(G.UnitFrames.Player.Health:GetFrameLevel())
 						else
 							G.UnitFrames.Player.WarlockSpecBars[i]:Point("LEFT", G.UnitFrames.Player.WarlockSpecBars[i-1], "RIGHT", 3, 0)
-							G.UnitFrames.Player.WarlockSpecBars[i]:Size(tbWidth*4, tbHeight)
+							G.UnitFrames.Player.WarlockSpecBars[i]:Size(tbWidth*4, 3)
 							G.UnitFrames.Player.WarlockSpecBars[i]:RobSkin()
 							G.UnitFrames.Player.WarlockSpecBars[i]:SetFrameLevel(G.UnitFrames.Player.Health:GetFrameLevel())
 						end

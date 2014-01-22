@@ -113,6 +113,8 @@ TukuiBar5:SetWidth(T.buttonsize * 1)
 TukuiBar5:SetHeight(T.buttonsize * 12)
 TukuiBar5:SolidSkin()
 
+TukuiPetBar:SetWidth(T.buttonsize * 1)
+TukuiPetBar:SetHeight(T.buttonsize * 10)
 TukuiPetBar:SolidSkin()
 
 TukuiMinimapStatsLeft:ClearAllPoints()

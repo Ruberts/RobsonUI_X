@@ -13,7 +13,7 @@ local CreateSpellEntry = function( id, castByAnyone, color, unitType, castSpellI
 end
 
 -- Configuration starts here:
-local disabledebuffs = C["classtimer"].disabledebuffs							-- display target debuffs above target
+local disabledebuffs = C["classtimer"].disabledebuffs						-- display target debuffs above target
 local BAR_HEIGHT = C["classtimer"].barheight								-- Bar height
 local BAR_SPACING = 3														-- Distance between bars
 local SPARK = C["classtimer"].spark											-- Show spark

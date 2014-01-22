@@ -14,9 +14,9 @@ bar:HookScript("OnEvent", function(self, event, unit)
 			button:SetParent(bar)
 			button:SetSize(T.petbuttonsize, T.petbuttonsize)
 			if(i == 1) then
-				button:SetPoint("TOPLEFT", 1, -1)
+				button:SetPoint("TOPLEFT", (-T.buttonspacing + 1), (-T.buttonspacing + 1))
 			else
-				button:SetPoint("TOP", _G["PetActionButton" .. ( i - 1 )], "BOTTOM", 0, -T.buttonspacing)
+				button:SetPoint("TOP", _G["PetActionButton" .. (i - 1)], "BOTTOM", 0, (T.buttonspacing - 1))
 			end
 			button:Show()
 			self:SetAttribute("addchild", button)

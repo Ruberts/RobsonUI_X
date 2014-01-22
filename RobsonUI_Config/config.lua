@@ -4,7 +4,7 @@ local C = {}
 local class = RAID_CLASS_COLORS[select(2,UnitClass("player"))]
 
 C["general"] = {
-	["uiscale"] = .71,
+	["uiscale"] = 0.71,
 }
 
 C["media"] = {
