@@ -60,6 +60,8 @@ local TRINKET_FILTER = {
 		CreateSpellEntry( 145261 ), -- Fiery Adept
 		CreateSpellEntry( 146184 ), -- Wrath of the Darkspear
 		CreateSpellEntry( 146202 ), -- Wrath
+		CreateSpellEntry( 148897 ), -- Extravagant Visions
+		CreateSpellEntry( 148906 ), -- Toxic Power
 };
 	
 local CLASS_FILTERS = {

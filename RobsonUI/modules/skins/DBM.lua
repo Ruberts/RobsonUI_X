@@ -279,25 +279,25 @@ local UploadDBM = function()
 			["r"] = classcolor.r,
 		},
 	}
-	DBT_SavedOptions["DBM"].StartColorR = classcolor.r
-	DBT_SavedOptions["DBM"].StartColorG = classcolor.g
-	DBT_SavedOptions["DBM"].StartColorB = classcolor.b
-	DBT_SavedOptions["DBM"].EndColorR = classcolor.r
-	DBT_SavedOptions["DBM"].EndColorG = classcolor.g
-	DBT_SavedOptions["DBM"].EndColorB = classcolor.b
-	DBT_SavedOptions["DBM"].Scale = 1
-	DBT_SavedOptions["DBM"].HugeScale = 1
-	DBT_SavedOptions["DBM"].HugeWidth = 300
-	DBT_SavedOptions["DBM"].Width = 347
-	DBT_SavedOptions["DBM"].BarXOffset = 0
-	DBT_SavedOptions["DBM"].BarYOffset = 3
-	DBT_SavedOptions["DBM"].IconLeft = true
-	DBT_SavedOptions["DBM"].ExpandUpwards = true
-	DBT_SavedOptions["DBM"].Texture = C["media"].normTex
-	DBT_SavedOptions["DBM"].IconRight = false
-	DBT_SavedOptions["DBM"].TimerPoint = "RIGHT"
-	DBT_SavedOptions["DBM"].TimerX = -183
-	DBT_SavedOptions["DBM"].TimerY = -400
+	DBT_PersistentOptions["DBM"].StartColorR = classcolor.r
+	DBT_PersistentOptions["DBM"].StartColorG = classcolor.g
+	DBT_PersistentOptions["DBM"].StartColorB = classcolor.b
+	DBT_PersistentOptions["DBM"].EndColorR = classcolor.r
+	DBT_PersistentOptions["DBM"].EndColorG = classcolor.g
+	DBT_PersistentOptions["DBM"].EndColorB = classcolor.b
+	DBT_PersistentOptions["DBM"].Scale = 1
+	DBT_PersistentOptions["DBM"].HugeScale = 1
+	DBT_PersistentOptions["DBM"].HugeWidth = 300
+	DBT_PersistentOptions["DBM"].Width = 347
+	DBT_PersistentOptions["DBM"].BarXOffset = 0
+	DBT_PersistentOptions["DBM"].BarYOffset = 3
+	DBT_PersistentOptions["DBM"].IconLeft = true
+	DBT_PersistentOptions["DBM"].ExpandUpwards = true
+	DBT_PersistentOptions["DBM"].Texture = C["media"].normTex
+	DBT_PersistentOptions["DBM"].IconRight = false
+	DBT_PersistentOptions["DBM"].TimerPoint = "RIGHT"
+	DBT_PersistentOptions["DBM"].TimerX = -183
+	DBT_PersistentOptions["DBM"].TimerY = -400
 	
 	
 end
